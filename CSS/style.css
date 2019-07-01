@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+
+.userInput{
+    padding: .5em;
+    border-radius: .5em;
+    border: #e3e3e3;
+    font-family: 'Varela Round', sans-serif;
+    margin: .5em;
+}
+
+.button{
+    background-color: #e3e3e3;
+    border-radius: .5em;
+    border: none; 
+    font-family: 'Varela Round', sans-serif;
+    margin: .5em;
+    padding: .5em;
+}

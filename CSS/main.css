@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+
+html{
+    font-family: 'Varela Round', sans-serif;
+}
+
+body{
+    margin: 0 auto;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.loginPane{
+    padding: 2em;
+    background-image: linear-gradient(to bottom right, #198bff, #146fcc);
+    border-radius: .5em;
+    margin-bottom: 5em;
+}
+
+.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
