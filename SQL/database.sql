@@ -11,6 +11,7 @@ CREATE TABLE Players (
     pName varchar(255),
     wins int,
     losses int,
+    totalScore int,
     PRIMARY KEY (player_ID)
 );
 
@@ -25,6 +26,13 @@ CREATE TABLE Games (
     title varchar(255),
     victory_ID int,
     season int,
+    map varchar(100),
+    sealvl varchar(100),
+    speed varchar(100),
+    rules varchar(100),
+    turns int,
+    turntype varchar(100),
+    nukes int,
     start_date date default now(),
     end_date date,
     PRIMARY KEY (game_ID),
@@ -49,6 +57,8 @@ CREATE TABLE Party(
     dead int,
     civ varchar(255),
     winner int,
+    score int,
+    placement int,
     PRIMARY KEY (party_ID),
     FOREIGN KEY (player_ID) REFERENCES Players(player_ID),
     FOREIGN KEY (game_ID) REFERENCES Games(game_ID)
@@ -62,43 +72,32 @@ INSERT INTO Victory (name) VALUES ('Religion');
 INSERT INTO Victory (name) VALUES ('Diplomacy');
 INSERT INTO Victory (name) VALUES ('Score');
 
-INSERT INTO Players (pName, wins, losses) VALUES ('Bradley',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Daniel',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Hamish',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Jason',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Jeremy',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Jess',0,0);
-INSERT INTO Players (pName, wins, losses) VALUES ('Joseph',0,0);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Bradley',1,0, 1501);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Daniel',0,1, 1171);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Hamish',0,1, 996);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Jason',0,1, 663);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Jeremy',0,1, 290);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Jess',0,1, 0);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Joseph',0,1, 0);
+INSERT INTO Players (pName, wins, losses, totalScore) VALUES ('Will',0,0, 0);
 
 INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
 
-INSERT INTO Games (title, victory_ID, season) VALUES ("Test Game",1,1);
+INSERT INTO Games (title, victory_ID, season, map, sealvl, speed, rules, turns, turntype, nukes) 
+VALUES ("Suicidal Apostles",7,1,"Tiny Fractal", "Low", "Quick", "GS", 225, "Simultaneous", "6");
 
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (1,1,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (1,2,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (1,3,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (1,4,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (1,5,0,"Unknown", null);
+
+INSERT INTO Party (game_ID, player_ID, dead, civ, winner, score, placement) VALUES (1,2,0,"Spain", null, 1171, 2);
+INSERT INTO Party (game_ID, player_ID, dead, civ, winner, score, placement) VALUES (1,1,0,"India", 1, 1501, 1);
+INSERT INTO Party (game_ID, player_ID, dead, civ, winner, score, placement) VALUES (1,3,0,"Egypt", null, 996, 3);
+INSERT INTO Party (game_ID, player_ID, dead, civ, winner, score, placement) VALUES (1,5,0,"Japan", null, 290,5);
+INSERT INTO Party (game_ID, player_ID, dead, civ, winner, score, placement) VALUES (1,4,0,"Russia", null, 663, 4);
+
 
 -- SELECT Party.winner, Games.title, Players.name, Party.dead, Party.civ
 -- FROM Party
 -- INNER JOIN Games ON Party.game_ID = Games.game_ID
 -- INNER JOIN Players On Party.player_ID = Players.player_ID
 -- WHERE Party.winner is null;
-
-INSERT INTO Games (title, victory_ID, end_date) VALUES ("Test Game Winner",3, '2019-07-04');
-
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (2,1,1,"India",0);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (2,2,1,"Spain",0);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (2,3,0,"Egypt",1);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (2,4,1,"England",0);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (2,5,1,"Japan",0);
-
-INSERT INTO Games (title, victory_ID) VALUES ("June Game",1);
-
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (3,4,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (3,5,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (3,6,0,"Unknown", null);
-INSERT INTO Party (game_ID, player_ID, dead, civ, winner) VALUES (3,7,0,"Unknown", null);
 
 
