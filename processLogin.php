@@ -1,6 +1,6 @@
 <?php
 
-    require 'connection.h';
+    require 'connection.inc';
 
     if (isset($_POST['login'])){
         $username=$_POST['username'];
@@ -15,7 +15,7 @@
 
         if (mysqli_num_rows($result) == 1){
             $_SESSION['login_user'] = $username;
-            header('location:gamedata.php');
+            header('location:dash');
         }else{ ?>
             <div class="alert alert-error">Error login! Please check your username or password</div>
         <?php

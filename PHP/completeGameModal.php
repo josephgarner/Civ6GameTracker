@@ -1,9 +1,3 @@
-<?php
-    require '../connection.inc';
-    $sql = "INSERT INTO Players (pName, wins, losses) VALUES ('".$_POST["newPlayer"]."',0,0)";
-    $result = mysqli_query($conn, $sql);
-?>
-
 <form action="Win Game">
     <span>Game Title: </span><input type="text" name="gameTitle"/><br>
     <span>Victory: </span><select name="sealvl">
@@ -13,10 +7,15 @@
     </select><br>
     <span>Turns: </span><input type="text" name="turns"/><br>
     <span>Nukes: </span><input type="text" name="turns"/><br>
+    <script>
+        $('#addNewPlayer').submit(function(event){
+            event.preventDefault();
+            var data = $('#addNewPlayer').serialize();
+            $.post('PHP/addnewplayer.php', data);
+            $("#Players").load("PHP/playerList.php");
+        });
     </script>
-    
     <?php 
-    
         require '../connection.inc';
         $sql = "SELECT pName, Players.player_ID 
                 FROM Players

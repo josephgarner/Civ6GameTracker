@@ -1,6 +1,6 @@
 <!-- http://site2019testing.rf.gd -->
 <!DOCTYPE html>
-<?php require 'connection.h';?>
+<?php require 'connection.inc';?>
 <html>
     <head>
         <title>Civ 6 Game Tracking</title>
