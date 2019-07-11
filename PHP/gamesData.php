@@ -10,15 +10,21 @@
                         <tr>
                             <th>$parent_row[title]</th>
                             <th>$parent_row[start_date]</th>
+                            <th>
+                                <form action='PHP/UpdateGame' method='POST'>
+                                    <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
+                                    <input class='button' type='Submit' value='Update Game'/>
+                                </form>
+                            </th>
                         </tr>
                         <tr>
                             <th>Player</th>
-                            <th>Alive</th>
-                            <th></th>
+                            <th>Defeated</th>
                             <th>Civ</th>
+                            <th>Score</th>
                         </tr>
             ";
-            $sql = "SELECT Players.pName, Party.dead, Party.civ, Party.party_ID, Players.player_ID
+            $sql = "SELECT Players.pName, Party.dead, Party.civ, Party.party_ID, Players.player_ID, Party.score
                 FROM Party
                 INNER JOIN Games ON Party.game_ID = Games.game_ID
                 INNER JOIN Players On Party.player_ID = Players.player_ID
@@ -29,14 +35,12 @@
                     echo "<tr>";
                     echo "<td>$row[pName]</td>";
                     if($row['dead'] == 1){
-                        echo "<td>Dead</td>";
+                        echo "<td>Defeated</td>";
                     }else{
                         echo "<td>Alive</td>";
-                        echo "<td><button class='button'>Died</button></td>";
                     }
                     echo "<td>$row[civ]</td>";
-                    echo "<td><button class='button' onClick='updateCiv(event,$row[player_ID],$row[party_ID])'>Update Civ</button></td>";
-                    echo "<td><button class='button'>Winner</button></td>";
+                    echo "<td>$row[score]</td>";
                     echo "</tr>";
                 }
             }

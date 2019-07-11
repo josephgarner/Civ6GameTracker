@@ -15,19 +15,36 @@
                             <th>$parent_row[vic_name]</th>
                         </tr>
                         <tr>
+                            <td>Map:</td>
                             <td>$parent_row[map]</td>
-                            <td>$parent_row[sealvl]</td>
-                            <td>$parent_row[speed]</td>
-                            <td>$parent_row[rules]</td>
-                            <td>$parent_row[turntype]</td>
                         </tr>
                         <tr>
-                            <td>Turns: $parent_row[turns]</td>
-                            <td>Nukes Launched: $parent_row[nukes]</td>
+                            <td>Sea Level:</td>
+                            <td>$parent_row[sealvl]</td>
                         </tr>
+                        <tr>
+                            <td>Speed:</td><td>$parent_row[speed]</td>
+                        </tr>
+                        <tr>
+                            <td>Rules:</td><td>$parent_row[rules]</td>
+                        </tr>
+                        <tr>
+                            <td>Turn Type:</td><td>$parent_row[turntype]</td>
+                        </tr>
+                        <tr>
+                            <td>Turns:</td><td>$parent_row[turns]</td>
+                        </tr>
+                        <tr>
+                            <td>Nukes Launched:</td><td>$parent_row[nukes]</td>
+                        </tr>
+                    </tbody>
+                <table>
+                <table style='text-align:center'>
+                    <tbody>
                         <tr>
                             <th>Player</th>
-                            <th></th>
+                            <th>Winner</th>
+                            <th>Deafeated</th>
                             <th>Civ</th>
                             <th>Score</th>
                         </tr>
