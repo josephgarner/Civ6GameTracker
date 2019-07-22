@@ -1,17 +1,17 @@
 <?php
     session_start();
 // SERVER
-    // $servername = "sql312.epizy.com";
-    // $username = "epiz_23994266";
-    // $password = "C9xXgowGTD";
-    // $db = "epiz_23994266_storage";
+    $servername = "sql312.epizy.com";
+    $username = "epiz_23994266";
+    $password = "C9xXgowGTD";
+    $db = "epiz_23994266_storage";
 
 // LOCAL
 
-$servername = "localhost";
-$username = "user";
-$password = "1234";
-$db = "storage";
+    // $servername = "localhost";
+    // $username = "user";
+    // $password = "1234";
+    // $db = "storage";
 
 
 // Create connection

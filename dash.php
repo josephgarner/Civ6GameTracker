@@ -15,21 +15,23 @@
         <script src="JS/refreshing.js"></script>
     </head>
     <body>
-        <div id="Players">
+        <form action="logout.php"><input class="button" type="submit" value="Logout"/></form>
+        <div class="flex" id="Players">
         </div>
-        <br>
-        <br>
-        <button class="button">New Game</button>
-
-        <div id="newGame_Modal">
-        </div>
-        <br>
-        <br>
+        <?php
+        if($_SESSION['admin'] == 1){
+        ?>
+            <h1>Create New Game</h1>
+            <div class="flex" id="newGame_Modal">
+            </div>
+        <?php
+        }
+        ?>
+        <h1>Current Games</h1>
         <div id="Games">
         </div>
-        <br>
-        <br>
-        <div id="Finished_Games">
+        <h1>Completed Games</h1>
+        <div class="flex" id="Finished_Games">
         </div>
          
     </body>

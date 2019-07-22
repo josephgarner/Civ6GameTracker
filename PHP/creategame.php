@@ -9,9 +9,11 @@
     $ruleSet = array_pop($players);
     $speed = array_pop($players);
     $sealvl = array_pop($players);
+    $mapsize = array_pop($players);
     $map = array_pop($players);
     $season = array_pop($players);
     require '../connection.inc';
+    $map = "$mapsize $map";
     $sql = "INSERT INTO Games (victory_ID, season, map, sealvl, speed, rules, turntype) 
     VALUES (1,'$season','$map','$sealvl','$speed','$ruleSet','$turnType')";
     $result = mysqli_query($conn, $sql);

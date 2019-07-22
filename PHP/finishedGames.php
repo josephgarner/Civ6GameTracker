@@ -8,6 +8,7 @@
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
             echo "
+            <div class='datapill'>
                 <table style='text-align:center'>
                     <tbody>
                         <tr>
@@ -80,6 +81,7 @@
             echo "
                     </tbody>
                 </table>
+            </div>
             ";
         }
     }

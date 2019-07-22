@@ -5,18 +5,22 @@
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
             echo "
+                <div class='datapill'>
                 <table>
                     <tbody>
                         <tr>
                             <th>$parent_row[title]</th>
                             <th>$parent_row[start_date]</th>
-                            <th>
+                            ";
+        if($_SESSION['admin'] == 1){
+            echo            "<th>
                                 <form action='PHP/UpdateGame' method='POST'>
                                     <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
                                     <input class='button' type='Submit' value='Update Game'/>
                                 </form>
-                            </th>
-                        </tr>
+                            </th>";
+        }
+            echo        "</tr>
                         <tr>
                             <th>Player</th>
                             <th>Defeated</th>
@@ -47,6 +51,7 @@
             echo "
                     </tbody>
                 </table>
+                </div>
             ";
         }
     }

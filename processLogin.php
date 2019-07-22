@@ -14,7 +14,10 @@
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) == 1){
+            $row = mysqli_fetch_assoc($result);
             $_SESSION['login_user'] = $username;
+            $_SESSION['admin'] = $row['admin'];
+            echo $_SESSION['admin'];
             header('location:dash');
         }else{ ?>
             <div class="alert alert-error">Error login! Please check your username or password</div>
