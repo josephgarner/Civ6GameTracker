@@ -29,7 +29,7 @@
         }
         ?>
         <h1>Current Games</h1>
-        <div id="Games">
+        <div class="flex" id="Games">
         </div>
         <h1>Completed Games</h1>
         <div class="flex" id="Finished_Games">

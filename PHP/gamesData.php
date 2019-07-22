@@ -1,15 +1,15 @@
 <?php
     require '../connection.inc';
-    $parent_sql = "SELECT title, game_ID, start_date FROM Games WHERE victory_ID = 1;";
+    $parent_sql = "SELECT game_ID, turns, start_date FROM Games WHERE victory_ID = 1;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
             echo "
-                <div class='datapill'>
+                <div class='datapill ongoing'>
                 <table>
                     <tbody>
                         <tr>
-                            <th>$parent_row[title]</th>
+                            <th>Turns: $parent_row[turns]</th>
                             <th>$parent_row[start_date]</th>
                             ";
         if($_SESSION['admin'] == 1){

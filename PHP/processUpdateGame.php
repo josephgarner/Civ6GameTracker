@@ -86,7 +86,7 @@
         }
         echo "<br>Updating Game<br>";
         $sql = "UPDATE Games
-                SET title = '$gameTitle', victory_ID = $victory
+                SET title = '$gameTitle', victory_ID = $victory, turns = $turns
                 WHERE game_ID = $gameID;";
         if (mysqli_query($conn, $sql)) {
             echo "Record Game Title and Vic updated successfully";

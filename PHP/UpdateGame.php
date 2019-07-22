@@ -6,10 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../CSS/main.css" rel="stylesheet" type="text/css">
         <link href="../CSS/style.css" rel="stylesheet" type="text/css">
+        <script src="../JS/check.js"></script>
     </head>
     <body>
         <div class="datapill">
-            <form action="../PHP/processUpdateGame" method="POST">
+            <!-- ../PHP/processUpdateGame -->
+            <form action="" method="POST">
             <?php
                 $gameID = $_POST["gameID"];
                 echo "<input type='hidden' name='gameID' value='$gameID'/>";
@@ -22,7 +24,7 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th>Game Name: <input type='text' name='GameTitle' value='$parent_row[title]'/></th>
+                                            <th>Game Name: <input id='GameTitle' type='text' name='GameTitle' value='$parent_row[title]'/></th>
                                             <th>Start Date: $parent_row[start_date]</th>
                                         </tr>
                                     </tbody>
@@ -53,8 +55,8 @@
                                     echo "<td><input type='checkbox' name='$row[player_ID]_defeated' value='$row[player_ID]'/></td>";
                                 }
                                 echo "<td><input type='input' name='$row[player_ID]_civ' value='$row[civ]'/></td>";
-                                echo "<td><span></span><input type='input' name='$row[player_ID]_score' value='$row[score]'/></td>";
-                                echo "<td><input type='radio' name='winner' value='$row[player_ID]'/></td>";
+                                echo "<td><span></span><input class='ID_Score' type='input' name='$row[player_ID]_score' value='$row[score]'/></td>";
+                                echo "<td><input class='ID_Winner' type='radio' name='winner' value='$row[player_ID]'/></td>";
                                 echo "</tr>";
                             }
                         }
@@ -65,7 +67,7 @@
                     }
                 }
             ?>
-                <span>Victory: </span><select name="Victory">
+                <span>Victory: </span><select id='Victor' name="Victory">
                     <option value="1">Game not complete</option>
                     <option value="2">Science</option>
                     <option value="3">Culture</option>
@@ -75,10 +77,10 @@
                     <option value="7">Score</option>
                     <option value="8">Default</option>
                 </select><br>
-                <span>Turns: </span><input type='input' name='turns'/><br>
+                <span>Turns: </span><input id='Turns' type='input' name='turns'/><br>
                 <span>Nuke: </span><input type='input' name='nukes'/><br>
-                <span>Ongoing Game: </span><input type='radio' name='winner' value='0' checked/><br>
-                <input class="button" type="submit" value="Update/Complete Game"/>
+                <span>Ongoing Game: </span><input class='ID_Winner' type='radio' name='winner' value='0' checked/><br>
+                <input class="button" type="submit" value="Update/Complete Game" onClick="return empty()"/>
                 <input class="button" type="submit" name="delete" value="Delete Game">
             </form>
         </div>
