@@ -3,6 +3,7 @@
 <html>
     <head>
         <Title>Updateing Game</Title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../CSS/main.css" rel="stylesheet" type="text/css">
         <link href="../CSS/style.css" rel="stylesheet" type="text/css">
     </head>

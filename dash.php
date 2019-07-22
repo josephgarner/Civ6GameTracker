@@ -9,6 +9,7 @@
 <html>
     <head>
         <title>Civ 6 Game Tracking</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="CSS/main.css" rel="stylesheet" type="text/css">
         <link href="CSS/style.css" rel="stylesheet" type="text/css">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>

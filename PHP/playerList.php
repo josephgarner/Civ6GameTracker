@@ -1,71 +1,79 @@
+
 <div class="datapill">    
-    <table style="text-align:center">
+    <table class="playerList">
         <tbody>
             <tr>
+                <th></th>
                 <th>Player</th>
                 <th>Score</th>
                 <th>Wins</th>
-
-                <th>Culture</th>
-                <th>Default</th>
-                <th>Diplomacy</th>
-                <th>Domination</th>
-                <th>Religion</th>
-                <th>Science</th>
-                <th>Score</th>
-
+            <?php   
+                require 'mobile.php';
+                if($mobile_browser == 0) {  ?>
+                <th>Cult</th>
+                <th>Defa</th>
+                <th>Dipl</th>
+                <th>Domi</th>
+                <th>Reli</th>
+                <th>Scie</th>
+                <th>Scor</th>
+            <?php } ?>
             </tr>
             <?php  
                 require '../connection.inc';
-                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, wins 
+                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, wins, color 
                                 FROM Players 
                                 RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
+                                RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
                                 ORDER BY Players.wins DESC, PlayerScore.totalScore DESC";
                 $parent_result = mysqli_query($conn, $parent_sql);
                 if (mysqli_num_rows($parent_result) > 0) {
                     while($row = mysqli_fetch_assoc($parent_result)) {
                         echo "<tr>";
+                        echo "<td class='color'><span style='color:$row[color];'>&#9679</span></td>";
                         echo "<td>$row[pName]</td>";
                         echo "<td>$row[totalScore]</td>";
                         echo "<td>$row[wins]</td>";
-                        $sql = "SELECT vic_name, COUNT(Victories.victory_ID) as wins
-                        FROM Victory
-                        LEFT OUTER JOIN Victories ON Victory.victory_ID = Victories.victory_ID
-                        AND player_ID = $row[player_ID]
-                        GROUP BY vic_name;";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            while($child_row = mysqli_fetch_assoc($result)) {
-                                switch("$child_row[vic_name]"){
-                                    case "No Victory":
-                                        // Do noting
-                                        break;
-                                    case "Science":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    case "Culture":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    case "Domination":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    case "Religion":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    case "Diplomacy":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    case "Score":
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
-                                    default:
-                                        echo "<td>$child_row[wins]</td>";
-                                        break;
+                        if($mobile_browser == 0) {
+                            $sql = "SELECT vic_name, COUNT(Victories.victory_ID) as wins
+                            FROM Victory
+                            LEFT OUTER JOIN Victories ON Victory.victory_ID = Victories.victory_ID
+                            AND player_ID = $row[player_ID]
+                            GROUP BY vic_name;";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while($child_row = mysqli_fetch_assoc($result)) {
+                                    switch("$child_row[vic_name]"){
+                                        case "No Victory":
+                                            // Do noting
+                                            break;
+                                        case "Science":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        case "Culture":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        case "Domination":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        case "Religion":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        case "Diplomacy":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        case "Score":
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                        default:
+                                            echo "<td>$child_row[wins]</td>";
+                                            break;
+                                    }
                                 }
                             }
                         }
                         if($_SESSION['admin'] == 1){
-                            echo "<td><button onClick='removePlayer(event, $row[player_ID])' class='button'>Remove</button></td>";
+                            echo "<td><button onClick='removePlayer(event, $row[player_ID])' class='button error'>Remove</button></td>";
                         }
                         echo "</tr>";
                     }
@@ -86,7 +94,7 @@
                 <td colspan="5">
                     <form action="/" id="addNewPlayer">
                         <span>New Player: </span><input type="text" name="newPlayer"/>
-                        <input class="button" type="submit" value="Add Player"/>
+                        <input class="button confirm" type="submit" value="Add Player"/>
                     </form>
                     <script>
                         $('#addNewPlayer').submit(function(event){

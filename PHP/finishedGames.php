@@ -3,7 +3,8 @@
     $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date
                 FROM Games INNER 
                 JOIN Victory ON Games.victory_ID = Victory.victory_ID
-                WHERE Games.victory_ID > 1;";
+                WHERE Games.victory_ID > 1
+                ORDER BY game_ID DESC;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {

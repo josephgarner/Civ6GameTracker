@@ -28,6 +28,14 @@ CREATE TABLE Victory(
     PRIMARY KEY (victory_ID)
 );
 
+CREATE TABLE Player_Color(
+    color_ID int NOT NULL AUTO_INCREMENT,
+    color varchar(100),
+    player_ID int,
+    PRIMARY KEY (color_ID),
+    FOREIGN KEY (player_ID) REFERENCES Players(player_ID)
+);  
+
 -- CREATE TABLE Games (
 --     game_ID int NOT NULL AUTO_INCREMENT,
 --     title varchar(255),
@@ -115,6 +123,15 @@ INSERT INTO Players (pName, wins) VALUES ('Joseph',0);
 INSERT INTO PlayerScore (player_ID) VALUES (7);
 INSERT INTO Players (pName, wins) VALUES ('Will',0);
 INSERT INTO PlayerScore (player_ID) VALUES (8);
+
+INSERT INTO Player_Color (color, player_ID) VALUE ('#99b433',1);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#ff0097',2);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#9f00a7',3);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#00aba9',4);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#2d89ef',5);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#ffc40d',6);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#da532c',7);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#b91d47',8);
 
 INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
 

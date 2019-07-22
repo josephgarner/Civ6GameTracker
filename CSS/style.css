@@ -20,3 +20,18 @@
 h1, h2, h3, h4{
     color: #fff;
 }
+
+.warning{
+    background-color: #ffae42;
+    color: #e3e3e3;
+}
+
+.confirm{
+    background-color: #1565c0;
+    color: #e3e3e3;
+}
+
+.error{
+    background-color: #B33A3A;
+    color: #e3e3e3;
+}
