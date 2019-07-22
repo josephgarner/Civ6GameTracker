@@ -10,8 +10,7 @@
     </head>
     <body>
         <div class="datapill">
-            <!-- ../PHP/processUpdateGame -->
-            <form action="" method="POST">
+            <form action="../PHP/processUpdateGame" method="POST">
             <?php
                 $gameID = $_POST["gameID"];
                 echo "<input type='hidden' name='gameID' value='$gameID'/>";
