@@ -1,6 +1,6 @@
 <?php
     require '../connection.inc';
-    $parent_sql = "SELECT game_ID, turns, start_date FROM Games WHERE victory_ID = 1;";
+    $parent_sql = "SELECT game_ID, turns FROM Games WHERE victory_ID = 1;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
@@ -10,13 +10,12 @@
                     <tbody>
                         <tr>
                             <th>Turns: $parent_row[turns]</th>
-                            <th>$parent_row[start_date]</th>
                             ";
         if($_SESSION['admin'] == 1){
             echo            "<th>
                                 <form action='PHP/UpdateGame' method='POST'>
                                     <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
-                                    <input class='button' type='Submit' value='Update Game'/>
+                                    <input class='button warning' type='Submit' value='Update Game'/>
                                 </form>
                             </th>";
         }

@@ -45,10 +45,9 @@
                     if(strpos($key, 'leader') !== false){
                         echo "<br>Updating Civ<br>";
                         $sql = "SELECT civ_ID FROM Civ
-                                WHERE civ_leader = '$value'";
+                        WHERE civ_leader = '$value';";
                         $result = mysqli_query($conn, $sql);
                         $civ_id = mysqli_fetch_row($result);
-                        print_r($result);
                         $sql = "UPDATE Party SET civ = $civ_id[0] WHERE game_ID = $gameID AND player_ID = $indx;";
                         if (mysqli_query($conn, $sql)) {
                             echo "Record updated successfully";
@@ -148,10 +147,14 @@
         }
 
         if($winner > 0){
+            $sql = "SELECT COUNT(game_ID) as games FROM Games where victory_ID > 1;";
+            $result = mysqli_query($conn, $sql);
+            $totalGames = mysqli_fetch_row($result);
             echo "<br>Updating End Date<br>";
             $today = date("Y-m-d");
+            $gameNum = $totalGames[0] + 1;
             $sql = "UPDATE Games
-                SET victory_ID = $victory, end_date = $today, nukes = $nuke, turns = $turns
+                SET victory_ID = $victory, end_date = '$today', nukes = $nuke, turns = $turns, complete_NO = $gameNum
                 WHERE game_ID = $gameID;";
             if (mysqli_query($conn, $sql)) {
                 echo "Record End Date updated successfully";

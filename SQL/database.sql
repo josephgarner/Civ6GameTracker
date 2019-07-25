@@ -67,6 +67,7 @@ CREATE TABLE Games (
     turns int default 0,
     turntype varchar(100),
     nukes int default 0,
+    complete_NO int,
     start_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     end_date date,
     PRIMARY KEY (game_ID),
@@ -113,6 +114,9 @@ ALTER TABLE Party
     ADD civ int,
     ADD CONSTRAINT FOREIGN KEY(civ) REFERENCES Civ(civ_ID);
 
+ALTER TABLE Games
+    ADD complete_NO int;
+
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('America','Teddy Roosevelt');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('Arabia','Saladin');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('Australia','John Curtin');
@@ -122,7 +126,7 @@ INSERT INTO Civ (civ_name, civ_leader) VALUES ('Canada','Wilfrid Laurier');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('China','Qin Shi Huang');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('Cree','Poundmaker');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('Netherlands','Wilhelmina');
-INSERT INTO Civ (civ_name, civ_leader) VALUES ('Egypti','Cleopatra');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Egypt','Cleopatra');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('England','Eleanor of Aquitaine(E)');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('England','Victoria');
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('France','Eleanor of Aquitaine(F)');
@@ -183,14 +187,14 @@ INSERT INTO PlayerScore (player_ID) VALUES (7);
 INSERT INTO Players (pName, wins) VALUES ('Will',0);
 INSERT INTO PlayerScore (player_ID) VALUES (8);
 
-INSERT INTO Player_Color (color, player_ID) VALUE ('#ff0097',1);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#da532c',2);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#9f00a7',3);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#00aba9',4);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#2d89ef',5);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#ffc40d',6);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#99b433',7);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#b91d47',8);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#be0374',1);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#c24a29',2);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#83098a',3);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#099290',4);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#2968b1',5);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#19af3f',6);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#9c0909',7);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#9ea813',8);
 
 INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
 

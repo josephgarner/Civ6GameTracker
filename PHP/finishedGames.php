@@ -1,10 +1,11 @@
 <?php 
     require '../connection.inc';
-    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date
+    require 'mobile.php';
+    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date, complete_NO
                 FROM Games INNER 
                 JOIN Victory ON Games.victory_ID = Victory.victory_ID
                 WHERE Games.victory_ID > 1
-                ORDER BY game_ID DESC;";
+                ORDER BY complete_NO DESC;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
@@ -18,7 +19,7 @@
             echo "<div class='datapill finGame'>";
             echo "
             <div class='winBanner flex' style='background-color:$row[color];'>
-                <table style='text-align:center'>
+                <table class='sortingGames' style='text-align:center'>
                     <tbody>
                         <tr>
                             <th colspan=3>$parent_row[title]</th>
@@ -43,9 +44,9 @@
             echo            "</th>   
                         </tr>
                         <tr>
-                            <th class='subheading'>Game N.O: 1</th>
+                            <th class='subheading'>Game $parent_row[complete_NO]</th>
                             <th class='subheading'>$parent_row[vic_name]</th>
-                            <th class='subheading'>Ended: 10/10/19</th>
+                            <th class='subheading'>$parent_row[end_date]</th>
                         </tr>
                     </tbody>
                 </table>
@@ -88,7 +89,7 @@
                             // <th>Deafeated</th>
                             // <th>Civ</th>
                             // <th>Score</th>
-            $sql = "SELECT Players.pName, Party.dead, civ_name, Party.score, Party.winner
+            $sql = "SELECT Players.pName, Party.dead, civ_name, civ_leader, Party.score, Party.winner
             FROM Party
             INNER JOIN Games ON Party.game_ID = Games.game_ID
             INNER JOIN Players On Party.player_ID = Players.player_ID
@@ -103,17 +104,24 @@
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>$row[pName]</td>";
-                    if($row['winner'] == 1){
+                    if($row['winner'] == 1 && $mobile_browser == 0){
                         echo "<td>Victor</td>";
-                    }else{
+                    }else if($row['winner'] == 1 && $mobile_browser != 0){
+                        echo "<td>V</td>";
+                    }
+                    else{
                         echo "<td></td>";
                     }
-                    if($row['dead'] == 1){
+                    if($row['dead'] == 1 && $mobile_browser == 0){
                         echo "<td>Defeated</td>";
-                    }else{
+                    }else if($row['dead'] == 1 && $mobile_browser != 0){
+                        echo "<td>D</td>";
+                    }
+                    else{
                         echo "<td></td>";
                     }
                     echo "<td>$row[civ_name]</td>";
+                    echo "<td><img src='IMAGES/CIVS/$row[civ_leader].png' height='40em'/></td>";
                     echo "<td>$row[score]</td>";
                     echo "</tr>";
                 }
@@ -121,6 +129,10 @@
             echo "
                     </tbody>
                 </table>
+                <form style='margin-top:1em;' action='PHP/updateCompleteGame' method='POST'>
+                    <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
+                    <input class='button warning' type='Submit' value='Update Civ Data'/>
+                </form>
             </div>
             ";
         }

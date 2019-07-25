@@ -40,7 +40,7 @@
                     <option value="True Start Location Europe">True Start Location Europe</option>
                 </select><br>
                 <span>Map Size: </span><br><select class="select" name="mapSize">
-                    <option value="Small">Tiny</option>
+                    <option value="Tiny">Tiny</option>
                     <option value="Small">Small</option>
                     <option value="Standed">Standed</option>
                     <option value="Large">Large</option>
@@ -53,7 +53,7 @@
                 </select><br>
                 <span>Speed: </span><br><select class="select" name="speed">
                     <option value="Online">Online</option>
-                    <option value="Quick">Quick</option>
+                    <option value="Quick" selected="selected">Quick</option>
                     <option value="Standard">Standard</option>
                     <option value="Epic">Epic</option>
                     <option value="Marathon">Marathon</option>

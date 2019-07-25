@@ -126,8 +126,8 @@
                 <span>Turns: </span><input id='Turns' type='input' name='turns'/><br>
                 <span>Nuke: </span><input type='input' name='nukes'/><br>
                 <span>Ongoing Game: </span><input class='ID_Winner' type='radio' name='winner' value='0' checked/><br>
-                <input class="button" type="submit" value="Update/Complete Game" onClick="return empty()"/>
-                <input class="button" type="submit" name="delete" value="Delete Game">
+                <input class="button confirm" type="submit" value="Update/Complete Game" onClick="return empty()"/>
+                <input class="button error" type="submit" name="delete" value="Delete Game">
             </form>
         </div>
     </body>

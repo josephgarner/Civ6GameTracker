@@ -16,7 +16,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="JS/refreshing.js"></script>
     </head>
-    <body>
+    <body style='margin-top: 5em;'>
         <div class="infoBar">
             <div class="left">
                 <?php 
@@ -51,7 +51,7 @@
         <div class="flex" id="Games">
         </div>
         <h1>Completed Games</h1>
-        <div class="flex" id="Finished_Games">
+        <div class="flex cards" id="Finished_Games">
         </div>
          
     </body>

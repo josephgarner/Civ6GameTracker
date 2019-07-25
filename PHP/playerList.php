@@ -10,13 +10,13 @@
             <?php   
                 require 'mobile.php';
                 if($mobile_browser == 0) {  ?>
-                <th>Cult</th>
-                <th>Defa</th>
-                <th>Dipl</th>
-                <th>Domi</th>
-                <th>Reli</th>
-                <th>Scie</th>
-                <th>Scor</th>
+                <th>Cul</th>
+                <th>Def</th>
+                <th>Dip</th>
+                <th>Dom</th>
+                <th>Rel</th>
+                <th>Sci</th>
+                <th>Sco</th>
             <?php } ?>
             </tr>
             <?php  

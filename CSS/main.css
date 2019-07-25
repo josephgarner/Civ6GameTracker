@@ -19,7 +19,6 @@ body{
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    margin-top: 5em;
     padding-left: 2em;
     padding-right: 2em;
     
@@ -68,6 +67,12 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100vw;
+}
+
+.cards{
+    display:flex;
+    align-items:flex-start;
+    align-content:flex-start;
 }
 
 .datapill{
@@ -158,8 +163,15 @@ body{
     font-size: 1.5em;
 }
 
+
 .subheading{
     font-size: .6em;
+    text-align: center;
+    width: 33%;
+}
+
+.sortingGames{
+    width: 100%
 }
 
 .finGame{
