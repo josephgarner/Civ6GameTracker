@@ -2,10 +2,12 @@
 
 html{
     font-family: 'Varela Round', sans-serif;
-    /* background-image: linear-gradient(to bottom right, #333333, #2e2e2e); */
-    background-color: #121212;
+    background-image: linear-gradient(to bottom right, #01589f, #043e6d);
+    /* background-color: #121212; */
+    /* background-color: #01589f; */
     max-width: 100vw;
     margin: 0 auto;
+    text-align: center;
 }
 
 body{
@@ -17,15 +19,39 @@ body{
     justify-content: center;
     align-items: center;
     flex-flow: column;
+    margin-top: 5em;
     padding-left: 2em;
     padding-right: 2em;
     
 }
 
+.infoBar{
+    position: absolute;
+    display: flex;
+    background-color: #00375e;
+    top: 0;
+    width: 100vw;
+    height: 5em;
+    max-width:100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left{
+    display: flex;
+    padding-left: 5em;
+}
+
+.right{
+    display: flex;
+    padding-right: 5em;
+}
+
 .loginPane{
     padding: 2em;
     /* background-image: linear-gradient(to bottom right, #198bff, #146fcc); */
-    background-color: #272727;
+    /* background-color: #272727; */
+    background-color: #00375e;
     border-radius: .5em;
     margin-bottom: 5em;
 }
@@ -54,9 +80,10 @@ body{
     margin: 2em;
     padding: 1em;
     /* background-image: linear-gradient(to bottom right, #3369ff, #1e80e2); */
-    background-color: #272727;
-    border-radius: .2em;
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.4);
+    /* background-color: #272727; */
+    background-color: #00375e;
+    border-radius: .1em;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
 .createGame{
@@ -127,7 +154,7 @@ body{
     right: 0em;
     width: 100%;
     height: 3em;
-    border-radius: .2em;
+    border-radius: .1em;
     font-size: 1.5em;
 }
 

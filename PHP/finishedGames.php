@@ -67,12 +67,13 @@
                             // <th>Deafeated</th>
                             // <th>Civ</th>
                             // <th>Score</th>
-            $sql = "SELECT Players.pName, Party.dead, Party.civ, Party.score, Party.winner
+            $sql = "SELECT Players.pName, Party.dead, civ_name, Party.score, Party.winner
             FROM Party
             INNER JOIN Games ON Party.game_ID = Games.game_ID
             INNER JOIN Players On Party.player_ID = Players.player_ID
             INNER JOIN Victory on Games.victory_ID = Victory.victory_ID
             LEFT JOIN Player_Color ON Party.player_ID = Player_Color.player_ID
+            LEFT JOIN Civ ON Party.civ = Civ.civ_ID
             WHERE Party.game_ID = $parent_row[game_ID]
             AND Games.victory_ID > 1
             ORDER BY placement ASC;";
@@ -91,7 +92,7 @@
                     }else{
                         echo "<td></td>";
                     }
-                    echo "<td>$row[civ]</td>";
+                    echo "<td>$row[civ_name]</td>";
                     echo "<td>$row[score]</td>";
                     echo "</tr>";
                 }

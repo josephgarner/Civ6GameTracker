@@ -17,6 +17,7 @@
             $row = mysqli_fetch_assoc($result);
             $_SESSION['login_user'] = $username;
             $_SESSION['admin'] = $row['admin'];
+            $_SESSION['season'] = 2;
             echo $_SESSION['admin'];
             header('location:dash');
         }else{ ?>

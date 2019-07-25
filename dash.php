@@ -4,6 +4,7 @@
     if ( !isset( $_SESSION['login_user'] ) ) {
         header("Location: index.php");
     }
+    $season = $_SESSION['season'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,25 @@
         <script src="JS/refreshing.js"></script>
     </head>
     <body>
-        <form action="logout.php"><input class="button" type="submit" value="Logout"/></form>
+        <div class="infoBar">
+            <div class="left">
+                <?php 
+                    echo "<h3>Season $season</h3>"; 
+                ?>
+            </div>
+            <div class="right">
+                <!-- <form action="logout.php">
+                    <select class="select" name="season">
+                    <option value="2">Season 2</option>
+                    <option value="3">Small</option>
+                    <option value="4">Standed</option>
+                    <option value="5">Large</option>
+                    <option value="6">Huge</option>
+                    </select>
+                </form> -->
+                <form action="setSeason.php"><input class="button error" type="submit" value="Logout"/></form>
+            </div>
+        </div>
         <div class="flex" id="Players">
         </div>
         <?php

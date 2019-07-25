@@ -39,11 +39,17 @@
             for($indx = 0; $indx <= 20; $indx++){
                 if (strpos($key, "$indx") !== false){
                     if(strpos($key, 'civ') !== false){
+                        echo "<br>Grabbing Civ<br>";
+                            $temp_Civ = $value;
+                    }
+                    if(strpos($key, 'leader') !== false){
                         echo "<br>Updating Civ<br>";
-                        $sql = "UPDATE Party
-                            SET civ = '$value'
-                            WHERE game_ID = $gameID
-                            AND player_ID = $indx;";
+                        $sql = "SELECT civ_ID FROM Civ
+                                WHERE civ_leader = '$value'";
+                        $result = mysqli_query($conn, $sql);
+                        $civ_id = mysqli_fetch_row($result);
+                        print_r($result);
+                        $sql = "UPDATE Party SET civ = $civ_id[0] WHERE game_ID = $gameID AND player_ID = $indx;";
                         if (mysqli_query($conn, $sql)) {
                             echo "Record updated successfully";
                         } else {

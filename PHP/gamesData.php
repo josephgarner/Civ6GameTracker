@@ -28,10 +28,11 @@
                             <th>Score</th>
                         </tr>
             ";
-            $sql = "SELECT Players.pName, Party.dead, Party.civ, Party.party_ID, Players.player_ID, Party.score
+            $sql = "SELECT Players.pName, Party.dead, civ_name, Party.party_ID, Players.player_ID, Party.score
                 FROM Party
                 INNER JOIN Games ON Party.game_ID = Games.game_ID
                 INNER JOIN Players On Party.player_ID = Players.player_ID
+                LEFT JOIN Civ ON Party.civ = Civ.civ_ID
                 WHERE Games.game_ID = '$parent_row[game_ID]';";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -43,7 +44,7 @@
                     }else{
                         echo "<td>Alive</td>";
                     }
-                    echo "<td>$row[civ]</td>";
+                    echo "<td>$row[civ_name]</td>";
                     echo "<td>$row[score]</td>";
                     echo "</tr>";
                 }

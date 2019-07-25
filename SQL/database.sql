@@ -84,19 +84,78 @@ CREATE TABLE Victories(
     FOREIGN KEY (game_ID) REFERENCES Games(game_ID)
 );
 
+CREATE TABLE Civ(
+    civ_ID int NOT NULL AUTO_INCREMENT,
+    civ_name varchar(255),
+    civ_leader varchar(255),
+    PRIMARY KEY (civ_ID)
+);
+
 CREATE TABLE Party(
     party_ID int NOT NULL AUTO_INCREMENT,
     game_ID int,
     player_ID int,
     dead int default 0,
-    civ varchar(255) default 'Unknown',
+    civ int,
     winner int default null,
     score int default 0,
     placement int default 0,
     PRIMARY KEY (party_ID),
     FOREIGN KEY (player_ID) REFERENCES Players(player_ID),
     FOREIGN KEY (game_ID) REFERENCES Games(game_ID)
+    FOREIGN KEY (civ) REFERENCES Civ(civ_ID)
 );
+
+ALTER TABLE Party
+DROP COLUMN civ;
+
+ALTER TABLE Party
+    ADD civ int,
+    ADD CONSTRAINT FOREIGN KEY(civ) REFERENCES Civ(civ_ID);
+
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('America','Teddy Roosevelt');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Arabia','Saladin');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Australia','John Curtin');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Aztec','Montezuma');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Brazil','Pedro II');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Canada','Wilfrid Laurier');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('China','Qin Shi Huang');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Cree','Poundmaker');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Netherlands','Wilhelmina');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Egypti','Cleopatra');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('England','Eleanor of Aquitaine(E)');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('England','Victoria');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('France','Eleanor of Aquitaine(F)');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('France','Catherine de Medici');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Georgia','Tamar');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Germany','Matthias Corvinus');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Inca','Pachacuti');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('India','Chandragupta');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('India','Gandhi');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Indonesia','Gitarja');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Japan','Hojo Tokimune');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Khmer','Jayavarman VII');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Kongo','Mvemba a Nzinga');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Korea','Seondeok');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Macedonia','Alexander');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Mali','Mansa Musa');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Mapuche','Lautaro');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Mongolia','Genghis Khan');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Maori','Kupe');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Norway','Harald Hardrada');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Nubian','Amanitore');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Ottoman','Suleiman');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Persia','Cyrus');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Phoenicia','Dido');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Poland','Jadwiga');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Rome','Trajan');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Russia','Peter');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Scottland','Robert the Bruce');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Scyth','Tomyris');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Spain','Philip II');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Sumerian','Gilgamesh');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Sweden','Kristina');
+INSERT INTO Civ (civ_name, civ_leader) VALUES ('Zulu','Shaka');
 
 INSERT INTO Victory (vic_name) VALUES ('No Victory');
 INSERT INTO Victory (vic_name) VALUES ('Science');
