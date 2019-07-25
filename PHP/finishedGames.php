@@ -21,10 +21,31 @@
                 <table style='text-align:center'>
                     <tbody>
                         <tr>
-                            <th>$parent_row[title]</th>
+                            <th colspan=3>$parent_row[title]</th>
                         </tr>
                         <tr>
-                            <th>$parent_row[vic_name]</th>
+                            <th colspan=3>";
+                            if("$parent_row[vic_name]" == "Science"){
+                                echo "<img src='IMAGES/VICS/science.png' height='50em'/>";
+                            }
+                            else if("$parent_row[vic_name]" == "Culture"){
+                                echo "<img src='IMAGES/VICS/culture.png' height='50em'/>";
+                            }
+                            else if("$parent_row[vic_name]" == "Default" || "$parent_row[vic_name]" == "Score" || "$parent_row[vic_name]" == "Diplomacy"){
+                                echo "<img src='IMAGES/VICS/generic.png' height='50em'/>";
+                            }
+                            else if("$parent_row[vic_name]" == "Domination"){
+                                echo "<img src='IMAGES/VICS/domination.png' height='50em'/>";
+                            }
+                            else if("$parent_row[vic_name]" == "Religion"){
+                                echo "<img src='IMAGES/VICS/religion.png' height='50em'/>";
+                            }
+            echo            "</th>   
+                        </tr>
+                        <tr>
+                            <th class='subheading'>Game N.O: 1</th>
+                            <th class='subheading'>$parent_row[vic_name]</th>
+                            <th class='subheading'>Ended: 10/10/19</th>
                         </tr>
                     </tbody>
                 </table>

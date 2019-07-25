@@ -153,17 +153,22 @@ body{
     left: 0em;
     right: 0em;
     width: 100%;
-    height: 3em;
+    height: 5em;
     border-radius: .1em;
     font-size: 1.5em;
 }
 
+.subheading{
+    font-size: .6em;
+}
+
 .finGame{
     min-width:25em;
+    max-width:30em;
 }
 
 .finGameTab{
-    margin-top: 4em;
+    margin-top: 7em;
     width: 100%;
     
 }
@@ -178,6 +183,7 @@ body{
 }
 
 .finGameTabplay{
+    margin-top: 1em;
     border: none;
     border-spacing: 0;
     width: 100%;
@@ -232,7 +238,7 @@ body{
     .winBanner{
         position: absolute;
         width: 100vw;
-        height: 3em;
+        height: 5em;
     }
     
 
