@@ -32,7 +32,10 @@
                             else if("$parent_row[vic_name]" == "Culture"){
                                 echo "<img src='IMAGES/VICS/culture.png' height='50em'/>";
                             }
-                            else if("$parent_row[vic_name]" == "Default" || "$parent_row[vic_name]" == "Score" || "$parent_row[vic_name]" == "Diplomacy"){
+                            else if("$parent_row[vic_name]" == "Diplomacy"){
+                                echo "<img src='IMAGES/VICS/diplo.png' height='50em'/>";
+                            }
+                            else if("$parent_row[vic_name]" == "Default" || "$parent_row[vic_name]" == "Score"){
                                 echo "<img src='IMAGES/VICS/generic.png' height='50em'/>";
                             }
                             else if("$parent_row[vic_name]" == "Domination"){
