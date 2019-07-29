@@ -1,11 +1,4 @@
 <?php
-    require 'connection.inc';
-    if ( !isset( $_SESSION['login_user'] ) ) {
-        header("Location: ../index.php");
-    }
-    $season = $_SESSION['season'];
-?>
-<?php
     require '../connection.inc';
     $gameID = $_POST["gameID"];
     if (isset($_POST['delete'])) {
@@ -188,5 +181,5 @@
             }
         }
     }
-    // header('location:../dash');
+    header('location:../dash');
 ?>

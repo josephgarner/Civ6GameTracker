@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
 
-html{
+html {
     font-family: 'Varela Round', sans-serif;
     background-image: linear-gradient(to bottom right, #01589f, #043e6d);
     /* background-color: #121212; */
@@ -10,7 +10,7 @@ html{
     text-align: center;
 }
 
-body{
+body {
     letter-spacing: 1px;
     margin: 0 auto;
     max-width: 100vw;
@@ -21,32 +21,32 @@ body{
     flex-flow: column;
     padding-left: 2em;
     padding-right: 2em;
-    
+
 }
 
-.infoBar{
+.infoBar {
     position: absolute;
     display: flex;
     background-color: #00375e;
     top: 0;
     width: 100vw;
     height: 5em;
-    max-width:100%;
+    max-width: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
-.left{
+.left {
     display: flex;
     padding-left: 5em;
 }
 
-.right{
+.right {
     display: flex;
     padding-right: 5em;
 }
 
-.loginPane{
+.loginPane {
     padding: 2em;
     /* background-image: linear-gradient(to bottom right, #198bff, #146fcc); */
     /* background-color: #272727; */
@@ -55,27 +55,27 @@ body{
     margin-bottom: 5em;
 }
 
-.loginForm{
+.loginForm {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column;
 }
 
-.flex{
+.flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100vw;
 }
 
-.cards{
-    display:flex;
-    align-items:flex-start;
-    align-content:flex-start;
+.cards {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
-.datapill{
+.datapill {
     z-index: 0;
     position: relative;
     color: rgb(255, 255, 255);
@@ -88,26 +88,26 @@ body{
     /* background-color: #272727; */
     background-color: #00375e;
     border-radius: .1em;
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-.createGame{
+.createGame {
     min-width: 25em;
 }
 
-.sbs{
+.sbs {
     display: flex;
     align-items: center;
     align-content: space-around;
     justify-content: space-between;
 }
 
-.select{
+.select {
     width: 100%;
 }
 
-.modal{
-    display:none;
+.modal {
+    display: none;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -115,44 +115,44 @@ body{
     top: 0;
     opacity: 0.5;
     z-index: 100;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
 }
 
-.playerList{
+.playerList {
     z-index: 10;
     width: 100%;
-    text-align:center;
+    text-align: center;
     border: none;
     border-spacing: 0;
 }
 
-.playerList tr:nth-child(2){
+.playerList tr:nth-child(2) {
     background-image: linear-gradient(to bottom right, #D4AF37, rgb(192, 159, 50));
     /* color: #2e2e2e; */
 }
 
-.playerList tr:nth-child(3){
-    background-image: linear-gradient(to bottom right, #c0c0c0 , #a3a3a3 );
+.playerList tr:nth-child(3) {
+    background-image: linear-gradient(to bottom right, #c0c0c0, #a3a3a3);
     /* color: #2e2e2e; */
 }
 
-.playerList tr:nth-child(4){
+.playerList tr:nth-child(4) {
     background-image: linear-gradient(to bottom right, #cd7f32, #b36e2a);
     /* color: #2e2e2e; */
 }
 
-.playerList td{
+.playerList td {
     border: none;
     margin: 0;
     min-width: 5em;
 }
 
-.color{
+.color {
     font-size: 1.5em;
-    min-width: 0em!important;
+    min-width: 0em !important;
 }
 
-.winBanner{
+.winBanner {
     position: absolute;
     top: 0em;
     left: 0em;
@@ -164,125 +164,254 @@ body{
 }
 
 
-.subheading{
+.subheading {
     font-size: .6em;
     text-align: center;
     width: 33%;
 }
 
-.sortingGames{
+.sortingGames {
     width: 100%
 }
 
-.finGame{
-    min-width:25em;
-    max-width:30em;
+.finGame {
+    min-width: 25em;
+    max-width: 30em;
 }
 
-.finGameTab{
+.finGameTab {
     margin-top: 7em;
     width: 100%;
-    
+
 }
 
-.finGameTab td:nth-child(1){
-    text-align: left;
-    /* color: #2e2e2e; */
-}
-.finGameTab td:nth-child(2){
+.finGameTab td:nth-child(1) {
     text-align: left;
     /* color: #2e2e2e; */
 }
 
-.finGameTabplay{
+.finGameTab td:nth-child(2) {
+    text-align: left;
+    /* color: #2e2e2e; */
+}
+
+.finGameTabplay {
     margin-top: 1em;
     border: none;
     border-spacing: 0;
     width: 100%;
 }
 
-.finGameTabplay tr:nth-child(2){
+.finGameTabplay tr:nth-child(2) {
     background-image: linear-gradient(to bottom right, #D4AF37, rgb(192, 159, 50));
     /* color: #2e2e2e; */
 }
 
-.finGameTabplay tr:nth-child(3){
-    background-image: linear-gradient(to bottom right, #c0c0c0 , #a3a3a3 );
+.finGameTabplay tr:nth-child(3) {
+    background-image: linear-gradient(to bottom right, #c0c0c0, #a3a3a3);
     /* color: #2e2e2e; */
 }
 
-.finGameTabplay tr:nth-child(4){
+.finGameTabplay tr:nth-child(4) {
     background-image: linear-gradient(to bottom right, #cd7f32, #b36e2a);
     /* color: #2e2e2e; */
 }
 
-.ongoing{
-    width:25em;
+.ongoing {
+    width: 25em;
 }
 
-.input{
+.input {
     border: none;
     border-radius: .25em;
     background-color: #a6cfeb;
-    color:#395063;
+    color: #395063;
     font-family: 'Varela Round', sans-serif;
     font-weight: 700;
     padding: .25em;
     font-size: .9em;
 }
 
-.input:focus{
+.input:focus {
     outline: none !important;
     box-shadow: 0 0 10px #685739;
 }
 
-.update{
+.update {
     width: 13em;
 }
 
-.updateNumPad{
+.updateNumPad {
     margin: .1em;
 }
 
-.updateNum{
+.updateNum {
     width: 5em;
 }
 
+
+/* CHECK BOX */
+.checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-label .checkbox-custom {
+    top: 0px;
+    left: 0px;
+    height: 2em;
+    width: 2em;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+}
+
+.checkbox-label .checkbox-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.checkbox-label:hover input~.checkbox-custom {
+    background-color: #ccc;
+}
+
+.checkbox-label input:checked~.checkbox-custom {
+    background-color: #2196F3;
+}
+
+.checkbox-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked~.checkbox-custom:after {
+    display: block;
+}
+
+.checkbox-label .checkbox-custom:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* CHECK BOX */
+
+
+/* RADIO */
+
+.radio-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio-label:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.radio-custom input:checked~.radio-custom {
+    background-color: #2196F3;
+}
+
+.radio-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+
+/* RADIO */
+
+
 @media only screen and (max-width: 900px) {
-    .datapill{
+    .datapill {
         /* padding-left: 0;
         padding-right: 0; */
         width: 95vw;
         margin: 0;
         margin-top: 2em;
     }
-    .createGame{
+
+    .createGame {
         min-width: 0;
         width: 95vw;
         padding-left: .5em;
         padding-right: .5em;
     }
 
-    .select{
+    .select {
         width: 80%;
     }
 
-    .finGame{
+    .finGame {
         min-width: 90vw;
     }
 
-    .ongoing{
+    .ongoing {
         width: 90vw;
     }
 
-    .winBanner{
+    .winBanner {
         position: absolute;
         width: 100vw;
         height: 5em;
     }
-    
 
-    html{
+
+    html {
         overflow-x: hidden;
     }
 }

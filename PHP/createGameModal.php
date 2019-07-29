@@ -12,7 +12,7 @@
                                 while($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr>";
                                     echo "<td>$row[pName]</td>";
-                                    echo "<td><input type='checkbox' name='$row[pName]' value='$row[player_ID]' /></td>";
+                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[pName]' value='$row[player_ID]' /><span class='checkbox-custom'></span></label></td>";
                                     echo "</tr>";
                                 }
                             }

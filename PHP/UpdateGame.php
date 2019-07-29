@@ -81,8 +81,8 @@
                                 else if($row['dead'] == 2){
                                     echo "<td colspan='2'>Forfeited</td>";
                                 }else{
-                                    echo "<td><input type='checkbox' name='$row[player_ID]_defeated' value='$row[player_ID]'/></td>";
-                                    echo "<td><input type='checkbox' name='$row[player_ID]_forfeit' value='$row[player_ID]'/></td>";
+                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[player_ID]_defeated' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[player_ID]_forfeit' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                 }
 
                                 
