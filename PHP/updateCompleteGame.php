@@ -56,6 +56,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Player</th>
+                                            <th>Def</th>
                                             <th>Civ</th>
                                             <th>leader</th>
                                         </tr>
@@ -73,6 +74,9 @@
                                 echo "<td>$row[pName]</td>";
                                 if($row['dead'] == 1){
                                     echo "<td>Defeated</td>";
+                                }
+                                else if($row['dead'] == 2){
+                                    echo "<td>Forfeited</td>";
                                 }else{
                                     echo "<td></td>";
                                 }

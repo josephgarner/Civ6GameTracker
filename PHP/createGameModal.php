@@ -21,8 +21,8 @@
                 </table>
             </div>
             <div>
-                <span>Season: </span><br><input class="select" type="text" name="season" value="2"/><br>
-                <span>Map: </span><br><select class="select"  name="map">
+                <span>Season: </span><br><input class="select input" type="text" name="season" value="2"/><br>
+                <span>Map: </span><br><select class="select input"  name="map">
                     <option value="Continents">Continents</option>
                     <option value="Fractal">Fractal</option>
                     <option value="Inland Sea">Inland Sea</option>
@@ -39,27 +39,27 @@
                     <option value="Europe">Europe</option>
                     <option value="True Start Location Europe">True Start Location Europe</option>
                 </select><br>
-                <span>Map Size: </span><br><select class="select" name="mapSize">
+                <span>Map Size: </span><br><select class="select input" name="mapSize">
                     <option value="Tiny">Tiny</option>
                     <option value="Small">Small</option>
                     <option value="Standed">Standed</option>
                     <option value="Large">Large</option>
                     <option value="Huge">Huge</option>
                 </select><br>
-                <span>Sea Level: </span><br><select class="select" name="sealvl">
+                <span>Sea Level: </span><br><select class="select input" name="sealvl">
                     <option value="Low">Low</option>
                     <option value="Medium">Regular</option>
                     <option value="High">High</option>
                 </select><br>
-                <span>Speed: </span><br><select class="select" name="speed">
+                <span>Speed: </span><br><select class="select input" name="speed">
                     <option value="Online">Online</option>
                     <option value="Quick" selected="selected">Quick</option>
                     <option value="Standard">Standard</option>
                     <option value="Epic">Epic</option>
                     <option value="Marathon">Marathon</option>
                 </select><br>
-                <span>Rull Set: </span><br><input class="select" type="text" name="ruleSet" value="GS"/><br>
-                <span>Turn Type: </span><br><select class="select" name="turnType">
+                <span>Rull Set: </span><br><input class="select input" type="text" name="ruleSet" value="GS"/><br>
+                <span>Turn Type: </span><br><select class="select input" name="turnType">
                     <option value="Simultaneous">Simultaneous</option>
                     <option value="Sequential">Sequential</option>
                 </select><br>

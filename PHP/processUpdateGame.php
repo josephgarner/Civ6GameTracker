@@ -1,4 +1,11 @@
 <?php
+    require 'connection.inc';
+    if ( !isset( $_SESSION['login_user'] ) ) {
+        header("Location: ../index.php");
+    }
+    $season = $_SESSION['season'];
+?>
+<?php
     require '../connection.inc';
     $gameID = $_POST["gameID"];
     if (isset($_POST['delete'])) {
@@ -86,6 +93,18 @@
                             echo "Error updating record: " . mysqli_error($conn);
                         }
                     }
+                    elseif(strpos($key, 'forfeit') !== false){
+                        echo "<br>Updating forfeit<br>";
+                        $sql = "UPDATE Party
+                            SET dead = 2
+                            WHERE game_ID = $gameID
+                            AND player_ID = $indx;";
+                        if (mysqli_query($conn, $sql)) {
+                            echo "Record forfeit updated successfully";
+                        } else {
+                            echo "Error updating record: " . mysqli_error($conn);
+                        }
+                    }
                 }
             }
         }
@@ -147,14 +166,20 @@
         }
 
         if($winner > 0){
+            if($nuke == null){
+                $nuke = 0;
+            }
             $sql = "SELECT COUNT(game_ID) as games FROM Games where victory_ID > 1;";
             $result = mysqli_query($conn, $sql);
             $totalGames = mysqli_fetch_row($result);
             echo "<br>Updating End Date<br>";
             $today = date("Y-m-d");
-            $gameNum = $totalGames[0] + 1;
+            $gameNum = $totalGames[0];
+            print_r($totalGames);
+
+            print_r($gameNum);
             $sql = "UPDATE Games
-                SET victory_ID = $victory, end_date = '$today', nukes = $nuke, turns = $turns, complete_NO = $gameNum
+                SET end_date = '$today', nukes = $nuke, turns = $turns, complete_NO = $gameNum
                 WHERE game_ID = $gameID;";
             if (mysqli_query($conn, $sql)) {
                 echo "Record End Date updated successfully";
@@ -163,5 +188,5 @@
             }
         }
     }
-    header('location:../dash');
+    // header('location:../dash');
 ?>

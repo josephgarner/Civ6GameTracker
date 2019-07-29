@@ -1,4 +1,3 @@
-
 <?php
     require '../connection.inc';
     $civs = array();
@@ -49,7 +48,7 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th>Game Name: <input id='GameTitle' type='text' name='GameTitle' value='$parent_row[title]'/></th>
+                                            <th>Game Name: <input class='input' id='GameTitle' type='text' name='GameTitle' value='$parent_row[title]'/></th>
                                             <th>Start Date: $parent_row[start_date]</th>
                                         </tr>
                                     </tbody>
@@ -58,7 +57,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Player</th>
-                                            <th>Defeated</th>
+                                            <th colspan='2'>Defeat/Forfeit</th>
                                             <th>Civ</th>
                                             <th>leader</th>
                                             <th>Score</th>
@@ -77,13 +76,17 @@
                                 echo "<tr>";
                                 echo "<td>$row[pName]</td>";
                                 if($row['dead'] == 1){
-                                    echo "<td>Defeated</td>";
+                                    echo "<td colspan='2'>Defeated</td>";
+                                }
+                                else if($row['dead'] == 2){
+                                    echo "<td colspan='2'>Forfeited</td>";
                                 }else{
                                     echo "<td><input type='checkbox' name='$row[player_ID]_defeated' value='$row[player_ID]'/></td>";
+                                    echo "<td><input type='checkbox' name='$row[player_ID]_forfeit' value='$row[player_ID]'/></td>";
                                 }
 
                                 
-                                echo "<td><select id='$row[player_ID]CIV' name='$row[player_ID]_civ' onchange='loadLeader($row[player_ID])'>";
+                                echo "<td><select class='input update' id='$row[player_ID]CIV' name='$row[player_ID]_civ' onchange='loadLeader($row[player_ID])'>";
                                 if("$row[civ]" == null || "$row[civ]" == 0){
                                     echo "<option value='0'>Unkown</option>";
                                 } else{
@@ -95,14 +98,18 @@
                                 echo "</select></td>";
 
 
-                                echo "<td><select id='$row[player_ID]LEADER' name='$row[player_ID]_civ_leader'>";
+                                echo "<td><select class='input update' id='$row[player_ID]LEADER' name='$row[player_ID]_civ_leader'>";
                                 if("$row[civ]" != null || "$row[civ]" != 0){
                                     echo "<option value='$row[civ]'>$row[civ_leader]</option>";
                                 } else{
                                     echo "<option value='0'>Unkown</option>";
                                 }
-                                echo "<td><span></span><input class='ID_Score' type='input' name='$row[player_ID]_score' value='$row[score]'/></td>";
-                                echo "<td><input class='ID_Winner' type='radio' name='winner' value='$row[player_ID]'/></td>";
+                                echo "<td><span></span><input class='input updateNum ID_Score' type='input' name='$row[player_ID]_score' value='$row[score]'/></td>";
+                                if($row['dead'] >= 1){
+                                    echo "<td></td>";
+                                }else{
+                                    echo "<td><input class='input ID_Winner' type='radio' name='winner' value='$row[player_ID]'/></td>";
+                                }
                                 echo "</tr>";
                             }
                         }
@@ -113,7 +120,7 @@
                     }
                 }
             ?>
-                <span>Victory: </span><select id='Victor' name="Victory">
+                <span>Victory: </span><select class='input update' id='Victor' name="Victory">
                     <option value="1">Game not complete</option>
                     <option value="2">Science</option>
                     <option value="3">Culture</option>
@@ -123,9 +130,9 @@
                     <option value="7">Score</option>
                     <option value="8">Default</option>
                 </select><br>
-                <span>Turns: </span><input id='Turns' type='input' name='turns'/><br>
-                <span>Nuke: </span><input type='input' name='nukes'/><br>
-                <span>Ongoing Game: </span><input class='ID_Winner' type='radio' name='winner' value='0' checked/><br>
+                <span>Turns: </span><input class='input updateNum updateNumPad' id='Turns' type='input' name='turns' value='0'/><br>
+                <span>Nuke: </span><input class='input updateNum updateNumPad' type='input' name='nukes' value='0'/><br>
+                <span>Ongoing Game: </span><input class='input ID_Winner' type='radio' name='winner' value='0' checked/><br>
                 <input class="button confirm" type="submit" value="Update/Complete Game" onClick="return empty()"/>
                 <input class="button error" type="submit" name="delete" value="Delete Game">
             </form>

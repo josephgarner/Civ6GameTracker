@@ -1,3 +1,4 @@
+
 <?php
     require '../connection.inc';
     $parent_sql = "SELECT game_ID, turns FROM Games WHERE victory_ID = 1;";
@@ -38,7 +39,10 @@
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>$row[pName]</td>";
-                    if($row['dead'] == 1){
+                    if($row['dead'] == 2){
+                        echo "<td>Forfeited</td>";
+                    }
+                    else if($row['dead'] == 1){
                         echo "<td>Defeated</td>";
                     }else{
                         echo "<td>Alive</td>";

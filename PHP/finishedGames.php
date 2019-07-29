@@ -1,3 +1,4 @@
+
 <?php 
     require '../connection.inc';
     require 'mobile.php';
@@ -112,19 +113,25 @@
                     }else if($row['winner'] == 1 && $mobile_browser != 0){
                         echo "<td>V</td>";
                     }
-                    else{
-                        echo "<td></td>";
-                    }
-                    if($row['dead'] == 1 && $mobile_browser == 0){
+                    else if($row['dead'] == 1 && $mobile_browser == 0){
                         echo "<td>Defeated</td>";
                     }else if($row['dead'] == 1 && $mobile_browser != 0){
                         echo "<td>D</td>";
+                    }
+                    else if($row['dead'] == 2 && $mobile_browser == 0){
+                        echo "<td>Forfeited</td>";
+                    }else if($row['dead'] == 2 && $mobile_browser != 0){
+                        echo "<td>F</td>";
                     }
                     else{
                         echo "<td></td>";
                     }
                     echo "<td>$row[civ_name]</td>";
-                    echo "<td><img src='IMAGES/CIVS/$row[civ_leader].png' height='40em'/></td>";
+                    if("$row[civ_leader]" != ""){
+                        echo "<td><img src='IMAGES/CIVS/$row[civ_leader].png' height='40em'/></td>";
+                    }else{
+                        echo "<td><img src='IMAGES/CIVS/Unknown.png' height='40em'/></td>";
+                    }
                     echo "<td>$row[score]</td>";
                     echo "</tr>";
                 }

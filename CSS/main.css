@@ -220,6 +220,34 @@ body{
     width:25em;
 }
 
+.input{
+    border: none;
+    border-radius: .25em;
+    background-color: #a6cfeb;
+    color:#395063;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 700;
+    padding: .25em;
+    font-size: .9em;
+}
+
+.input:focus{
+    outline: none !important;
+    box-shadow: 0 0 10px #685739;
+}
+
+.update{
+    width: 13em;
+}
+
+.updateNumPad{
+    margin: .1em;
+}
+
+.updateNum{
+    width: 5em;
+}
+
 @media only screen and (max-width: 900px) {
     .datapill{
         /* padding-left: 0;

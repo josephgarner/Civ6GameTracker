@@ -93,7 +93,7 @@
             <tr>
                 <td colspan="5">
                     <form action="/" id="addNewPlayer">
-                        <span>New Player: </span><input type="text" name="newPlayer"/>
+                        <span>New Player: </span><input class="input" type="text" name="newPlayer"/>
                         <input class="button confirm" type="submit" value="Add Player"/>
                     </form>
                     <script>
