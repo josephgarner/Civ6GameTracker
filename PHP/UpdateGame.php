@@ -49,7 +49,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Game Name: <input class='input' id='GameTitle' type='text' name='GameTitle' value='$parent_row[title]'/></th>
-                                            <th>Start Date: $parent_row[start_date]</th>
+                                            <!-- <th>Start Date: $parent_row[start_date]</th> --!>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -108,7 +108,12 @@
                                 if($row['dead'] >= 1){
                                     echo "<td></td>";
                                 }else{
-                                    echo "<td><input class='input ID_Winner' type='radio' name='winner' value='$row[player_ID]'/></td>";
+                                    echo "<td style='padding-left:.5em;'>
+                                            <label class='radio-label'>
+                                                <input class='input ID_Winner' type='radio' name='winner' value='$row[player_ID]'/>
+                                                <span class='checkmark'></span>
+                                            </label>
+                                        </td>";
                                 }
                                 echo "</tr>";
                             }
@@ -119,22 +124,32 @@
                         ";
                     }
                 }
-            ?>
-                <span>Victory: </span><select class='input update' id='Victor' name="Victory">
-                    <option value="1">Game not complete</option>
-                    <option value="2">Science</option>
-                    <option value="3">Culture</option>
-                    <option value="4">Domination</option>
-                    <option value="5">Religion</option>
-                    <option value="6">Diplomacy</option>
-                    <option value="7">Score</option>
-                    <option value="8">Default</option>
-                </select><br>
-                <span>Turns: </span><input class='input updateNum updateNumPad' id='Turns' type='input' name='turns' value='0'/><br>
-                <span>Nuke: </span><input class='input updateNum updateNumPad' type='input' name='nukes' value='0'/><br>
-                <span>Ongoing Game: </span><input class='input ID_Winner' type='radio' name='winner' value='0' checked/><br>
-                <input class="button confirm" type="submit" value="Update/Complete Game" onClick="return empty()"/>
-                <input class="button error" type="submit" name="delete" value="Delete Game">
+            ?>  
+                <div class='flex'>
+                    <span class='update-span'>Victory: </span><select class='input update' id='Victor' name="Victory">
+                        <option value="1">Game not complete</option>
+                        <option value="2">Science</option>
+                        <option value="3">Culture</option>
+                        <option value="4">Domination</option>
+                        <option value="5">Religion</option>
+                        <option value="6">Diplomacy</option>
+                        <option value="7">Score</option>
+                        <option value="8">Default</option>
+                    </select><br>
+                    <span class='update-span'>Turns: </span><input class='input updateNum ID_Score' id='Turns' type='input' name='turns' value='0'/><br>
+                    <span class='update-span'>Nuke: </span><input class='input updateNum ID_Score' type='input' name='nukes' value='0'/><br>
+                    <span class='update-span'>Ongoing Game: </span>
+                    <div class='padding-top'>
+                        <label class="radio-label">
+                            <input class='input ID_Winner' type='radio' name='winner' value='0' checked/><br>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+            </div>
+            <div class='flex'>
+                    <input class="button confirm" type="submit" value="Update/Complete Game" onClick="return empty()"/>
+                    <input class="button error" type="submit" name="delete" value="Delete Game">
+                </div>
             </form>
         </div>
     </body>

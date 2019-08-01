@@ -25,7 +25,8 @@
                                 FROM Players 
                                 RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
                                 RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
-                                ORDER BY Players.wins DESC, PlayerScore.totalScore DESC";
+                                WHERE Player_Color.player_ID IS NOT NULL
+                                ORDER BY Players.wins DESC, PlayerScore.totalScore DESC;";
                 $parent_result = mysqli_query($conn, $parent_sql);
                 if (mysqli_num_rows($parent_result) > 0) {
                     while($row = mysqli_fetch_assoc($parent_result)) {
@@ -87,28 +88,42 @@
                     $("#Players").load("PHP/playerList.php");
                 }   
             </script>
-            <?php 
-            if($_SESSION['admin'] == 1){
-            ?>
-            <tr>
-                <td colspan="5">
-                    <form action="/" id="addNewPlayer">
-                        <span>New Player: </span><input class="input" type="text" name="newPlayer"/>
-                        <input class="button confirm" type="submit" value="Add Player"/>
-                    </form>
-                    <script>
-                        $('#addNewPlayer').submit(function(event){
-                            event.preventDefault();
-                            var data = $('#addNewPlayer').serialize();
-                            $.post('PHP/addnewplayer.php', data);
-                            $("#Players").load("PHP/playerList.php");
-                        });
-                    </script>
-                </td>
-            </tr>
-            <?php
-            }
-            ?>
         </tbody>
     </table>
 </div>
+
+<?php 
+if($_SESSION['admin'] == 1){
+?>
+<div class='datapill centre'>
+    <form action="/" id="addNewPlayer">
+        <span>New Player: </span><input class="input" type="text" name="newPlayer"/>
+        <br>
+        <span>Player Color: </span><select class="input" name="color">
+            <?php
+                $parent_sql = "SELECT color
+                FROM Player_Color 
+                WHERE player_ID IS NULL";
+                $parent_result = mysqli_query($conn, $parent_sql);
+                if (mysqli_num_rows($parent_result) > 0) {
+                    while($row = mysqli_fetch_assoc($parent_result)) {
+                        echo "<option style='background-color:$row[color] ! important;' value=$row[color]></option>";
+                    }
+                }
+            ?>
+        </select><br>
+        <input class="button confirm" type="submit" value="Add Player"/>
+    </form>
+    <script>
+        $('#addNewPlayer').submit(function(event){
+            event.preventDefault();
+            var data = $('#addNewPlayer').serialize();
+            $.post('PHP/addnewplayer.php', data);
+            $("#Players").load("PHP/playerList.php");
+        });
+    </script>
+<div>
+
+<?php
+}
+?>

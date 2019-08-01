@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
 
-.userInput{
+.userInput {
     padding: .5em;
     border-radius: .5em;
     border: #e3e3e3;
@@ -8,31 +8,203 @@
     margin: .5em;
 }
 
-.button{
+.button {
     background-color: #e3e3e3;
     border-radius: .5em;
-    border: none; 
+    border: none;
     font-family: 'Varela Round', sans-serif;
     margin: .5em;
     padding: .5em;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
     color: #fff;
 }
 
-.warning{
+.warning {
     background-color: #ad7c21;
     color: #e3e3e3;
 }
 
-.confirm{
+.confirm {
     /* background-color: #1565c0; */
     background-color: rgb(103, 161, 37);
     color: #e3e3e3;
 }
 
-.error{
+.error {
     background-color: #B33A3A;
     color: #e3e3e3;
 }
+
+.input {
+    border: none;
+    /* border-radius: .25em; */
+    border-bottom: .1em solid #DAA520;
+    background: none;
+    color: rgb(255, 255, 255);
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 700;
+    /* padding: .25em; */
+    padding: 0;
+    font-size: .9em;
+    margin: .25em;
+    letter-spacing: 1.5px;
+}
+
+.input option{
+    border: .1em solid #DAA520;
+    /* color: #00233b; */
+    background-color: #00375e;
+    color: rgb(255, 255, 255);
+}
+
+.input:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+
+
+
+/* CHECK BOX */
+.checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 25px;
+    width: 25px;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+}
+
+.checkbox-label .checkbox-custom {
+    top: 0px;
+    left: 0px;
+    height: 2em;
+    width: 2em;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+}
+
+.checkbox-label .checkbox-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.checkbox-label:hover input~.checkbox-custom {
+    background-color: #ccc;
+}
+
+.checkbox-label input:checked~.checkbox-custom {
+    background-color: #2196F3;
+}
+
+.checkbox-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked~.checkbox-custom:after {
+    display: block;
+}
+
+.checkbox-label .checkbox-custom:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* CHECK BOX */
+
+
+/* RADIO */
+
+.radio-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.radio-label input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.radio-label .checkmark:after {
+    top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+
+/* RADIO */

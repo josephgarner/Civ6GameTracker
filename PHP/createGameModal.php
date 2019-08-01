@@ -2,7 +2,7 @@
     <form action="/" id="createNewGame">
         <div class="sbs">
             <div>
-                <table id="Players">
+                <table class='selectPlayers' id="Players">
                     <tbody>
                         <?php  
                             require '../connection.inc';
@@ -11,8 +11,8 @@
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr>";
-                                    echo "<td>$row[pName]</td>";
-                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[pName]' value='$row[player_ID]' /><span class='checkbox-custom'></span></label></td>";
+                                        echo "<td>$row[pName]</td>";
+                                        echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[pName]' value='$row[player_ID]' /><span class='checkbox-custom'></span></label></td>";
                                     echo "</tr>";
                                 }
                             }
@@ -48,7 +48,7 @@
                 </select><br>
                 <span>Sea Level: </span><br><select class="select input" name="sealvl">
                     <option value="Low">Low</option>
-                    <option value="Medium">Regular</option>
+                    <option value="Medium">Standard</option>
                     <option value="High">High</option>
                 </select><br>
                 <span>Speed: </span><br><select class="select input" name="speed">

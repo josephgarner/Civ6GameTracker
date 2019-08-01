@@ -190,14 +190,23 @@ INSERT INTO PlayerScore (player_ID) VALUES (7);
 INSERT INTO Players (pName, wins) VALUES ('Will',0);
 INSERT INTO PlayerScore (player_ID) VALUES (8);
 
-INSERT INTO Player_Color (color, player_ID) VALUE ('#be0374',1);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#c24a29',2);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#83098a',3);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#099290',4);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#2968b1',5);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#19af3f',6);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#9c0909',7);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#9ea813',8);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#cc0000',1);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#cc6600',2);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#cc3300',3);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#cc9900',4);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#cccc00',5);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#99cc00',6);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#66cc00',7);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#00cc66',8);
+
+INSERT INTO Player_Color (color) VALUE ('#00cc99');
+INSERT INTO Player_Color (color) VALUE ('#0099cc');
+INSERT INTO Player_Color (color) VALUE ('#0033cc');
+INSERT INTO Player_Color (color) VALUE ('#6600cc');
+INSERT INTO Player_Color (color) VALUE ('#cc00cc');
+INSERT INTO Player_Color (color) VALUE ('#cc0099');
+INSERT INTO Player_Color (color) VALUE ('#888844');
+INSERT INTO Player_Color (color) VALUE ('#669999');
 
 INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
 

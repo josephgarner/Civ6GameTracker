@@ -1,6 +1,6 @@
 <?php
     require '../connection.inc';
-    $sql = "INSERT INTO Players (pName, wins, losses) VALUES ('".$_POST["newPlayer"]."',0,0)";
+    $sql = "INSERT INTO Players (pName, wins) VALUES ('".$_POST["newPlayer"]."',0)";
     $result = mysqli_query($conn, $sql);
     
     $sql = "SELECT cound(player_ID) FROM Players"

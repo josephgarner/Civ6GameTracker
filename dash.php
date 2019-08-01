@@ -36,7 +36,7 @@
                 <form action="setSeason.php"><input class="button error" type="submit" value="Logout"/></form>
             </div>
         </div>
-        <div class="flex" id="Players">
+        <div class="flex flex-coloumn" id="Players">
         </div>
         <?php
         if($_SESSION['admin'] == 1){
