@@ -2,10 +2,11 @@
 <?php 
     require '../connection.inc';
     require 'mobile.php';
-    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date, complete_NO
+    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date, complete_NO, season
                 FROM Games INNER 
                 JOIN Victory ON Games.victory_ID = Victory.victory_ID
                 WHERE Games.victory_ID > 1
+                AND season = $season
                 ORDER BY complete_NO DESC;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {

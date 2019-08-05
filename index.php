@@ -4,8 +4,11 @@
     if (!isset($_SESSION['admin'])){
         $_SESSION['admin'] = 0;
     }
-    $_SESSION['season'] = 2;
+    if (!isset($_SESSION['season'])){
+        $_SESSION['season'] = 2;
+    }
     $season = $_SESSION['season'];
+    // print_r($season);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,18 +23,24 @@
     <body style='margin-top: 5em;'>
         <div class="infoBar">
             <div class='left'>
-            <select class='input update' id='Season' names='Season' onchange='reloadAll()'>
-                <?php
-                    $sql = "SELECT season from Games";
-                    $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            while($row = mysqli_fetch_assoc($result)) {
-                                echo "<option value=$row[season]>Season $row[season]</option>";
+                <form action="PHP/sessionChange.php" method="POST" id="selectSeason">
+                    <select class='input update' id='Season' name='Season' onchange="this.form.submit()">>
+                    <?php
+                        require 'connection.inc';
+                        $sql = "SELECT season from Games GROUP BY season";
+                        $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    if($row[season] == $season){
+                                        echo "<option value=$row[season] selected>Season $row[season]</option>";
+                                    }else{
+                                        echo "<option value=$row[season]>Season $row[season]</option>";
+                                    }
+                                }
                             }
-                        }
-                ?>
-                    <option>Season 2</season>
-                </select>
+                    ?>
+                    </select>
+                </form>
             </div>
             <div class='right'>
             <?php

@@ -20,14 +20,14 @@ function empty() {
                     Score[i].classList.remove("EMPTY");
                 }
             }
-            if(Turns == ''){
+            if(Turns == '0'){
                 Turns.classList.add("EMPTY");
                 console.log("No turn number provided");
                 return false;
             }else{
                 Turns.classList.remove("EMPTY");
             }
-            if(GameTitle.value == ''){
+            if(GameTitle.value == '' || GameTitle.value == ' '){
                 GameTitle.classList.add("EMPTY");
                 console.log("No Title Given");
                 return false;

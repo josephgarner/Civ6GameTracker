@@ -1,7 +1,7 @@
 
 <?php
     require '../connection.inc';
-    $parent_sql = "SELECT game_ID, turns FROM Games WHERE victory_ID = 1;";
+    $parent_sql = "SELECT game_ID, turns FROM Games WHERE victory_ID = 1 AND season = $season;";
     $parent_result = mysqli_query($conn, $parent_sql);
     if (mysqli_num_rows($parent_result) > 0) {
         while($parent_row = mysqli_fetch_assoc($parent_result)) {

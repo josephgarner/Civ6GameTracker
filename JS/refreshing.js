@@ -13,6 +13,17 @@ $(document).ready(function () {
     });
 });
 
-function reloadAll(){
-    window.location.reload();
-}
+// $(document).ready(function () {
+//     $('#selectSeason').submit(function(event){
+//         $.ajax({
+//             type : 'POST',
+//             url : 'PHP/sessionChange.php',           
+//             data: {
+//                 season : $('#Season').val(),
+//             },
+//             success:function (data) {
+//                 $("#yourdiv").append(data);
+//             }          
+//         });     
+//     });
+// });

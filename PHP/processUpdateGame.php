@@ -62,15 +62,27 @@
                             WHERE game_ID = $gameID
                             AND player_ID = $indx;";
                         if (mysqli_query($conn, $sql)) {
-                            echo "Record  Score updated successfully";
+                            echo "Record Score updated successfully";
                         } else {
                             echo "Error updating record: " . mysqli_error($conn);
                         }
                         if($winner > 0){
                             $sql = "UPDATE PlayerScore
                                     SET totalScore = totalScore + $value
-                                    WHERE player_ID = $indx;";
-                            mysqli_query($conn, $sql);
+                                    WHERE player_ID = $indx
+                                    AND season = $season;";
+                            if (mysqli_query($conn, $sql)) {
+                                echo "Record Total Score updated successfully";
+                            } else {
+                                echo "Error updating record: " . mysqli_error($conn);
+                            }
+                            if(mysqli_affected_rows() == 0){
+                                $sql = "INSERT INTO PlayerScore(totalScore, player_ID,season)
+                                    VALUES($value,$indx,$season)";
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "Record NEW Total Score updated successfully";
+                                }
+                            }
                         }
                         $players[$indx]=$value;
                     }
@@ -162,7 +174,7 @@
             if($nuke == null){
                 $nuke = 0;
             }
-            $sql = "SELECT COUNT(game_ID) as games FROM Games where victory_ID > 1;";
+            $sql = "SELECT COUNT(game_ID) as games FROM Games where victory_ID > 1 and season = $season;";
             $result = mysqli_query($conn, $sql);
             $totalGames = mysqli_fetch_row($result);
             echo "<br>Updating End Date<br>";
@@ -181,5 +193,5 @@
             }
         }
     }
-    header('location:../dash');
+    // header('location:../');
 ?>

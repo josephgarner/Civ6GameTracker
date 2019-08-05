@@ -68,6 +68,12 @@ h4 {
 }
 
 
+.EMPTY{
+    background-color: rgb(192, 105, 105) !important;
+    border-color: #e4261f;
+    box-shadow: 0 0 10px #e4261f !important;
+}
+
 
 
 /* CHECK BOX */

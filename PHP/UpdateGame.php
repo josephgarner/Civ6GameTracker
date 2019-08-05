@@ -40,7 +40,7 @@
                 echo "<script> setArrs($js_civs, $js_leaders); </script>";
                 $gameID = $_POST["gameID"];
                 echo "<input type='hidden' name='gameID' value='$gameID'/>";
-                $parent_sql = "SELECT title, game_ID, start_date FROM Games WHERE game_ID = '$gameID';";
+                $parent_sql = "SELECT title, game_ID, turns, nukes, start_date FROM Games WHERE game_ID = '$gameID';";
                     $parent_result = mysqli_query($conn, $parent_sql);
                     if (mysqli_num_rows($parent_result) > 0) {
                         while($parent_row = mysqli_fetch_assoc($parent_result)) {
@@ -122,6 +122,9 @@
                                 </tbody>
                             </table>
                         ";
+
+                        echo "<span class='update-span'>Turns: </span><input class='input updateNum' id='Turns' type='input' name='turns' value='$parent_row[turns]'/><br>";
+                        echo "<span class='update-span'>Nuke: </span><input class='input updateNum' id='nukes' type='input' name='nukes' value='$parent_row[nukes]'/><br>";
                     }
                 }
             ?>  
@@ -136,8 +139,6 @@
                         <option value="7">Score</option>
                         <option value="8">Default</option>
                     </select><br>
-                    <span class='update-span'>Turns: </span><input class='input updateNum ID_Score' id='Turns' type='input' name='turns' value='0'/><br>
-                    <span class='update-span'>Nuke: </span><input class='input updateNum ID_Score' type='input' name='nukes' value='0'/><br>
                     <span class='update-span'>Ongoing Game: </span>
                     <div class='padding-top'>
                         <label class="radio-label">

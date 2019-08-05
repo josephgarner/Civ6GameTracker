@@ -11,11 +11,11 @@
     $sealvl = array_pop($players);
     $mapsize = array_pop($players);
     $map = array_pop($players);
-    $season = array_pop($players);
+    $season_New = array_pop($players);
     require '../connection.inc';
     $map = "$mapsize $map";
     $sql = "INSERT INTO Games (victory_ID, season, map, sealvl, speed, rules, turntype) 
-    VALUES (1,'$season','$map','$sealvl','$speed','$ruleSet','$turnType')";
+    VALUES (1,'$season_New','$map','$sealvl','$speed','$ruleSet','$turnType')";
     $result = mysqli_query($conn, $sql);
 
     $parent_sql = "SELECT game_ID FROM Games WHERE victory_ID = 1 ORDER BY game_ID DESC LIMIT 1;";

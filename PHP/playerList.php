@@ -21,11 +21,12 @@
             </tr>
             <?php  
                 require '../connection.inc';
-                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, wins, color 
+                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, wins, color, season
                                 FROM Players 
                                 RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
                                 RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
                                 WHERE Player_Color.player_ID IS NOT NULL
+                                AND season = $season
                                 ORDER BY Players.wins DESC, PlayerScore.totalScore DESC;";
                 $parent_result = mysqli_query($conn, $parent_sql);
                 if (mysqli_num_rows($parent_result) > 0) {
