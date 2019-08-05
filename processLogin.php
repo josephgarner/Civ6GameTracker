@@ -19,9 +19,9 @@
             $_SESSION['admin'] = $row['admin'];
             $_SESSION['season'] = 2;
             echo $_SESSION['admin'];
-            header('location:dash');
+            header('location:/');
         }else{ ?>
-            <div class="alert alert-error">Error login! Please check your username or password</div>
+            header('location:/');
         <?php
         }
     }

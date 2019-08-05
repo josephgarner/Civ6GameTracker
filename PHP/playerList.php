@@ -1,5 +1,5 @@
 
-<div class="datapill">    
+<div class="datapill playList">    
     <table class="playerList">
         <tbody>
             <tr>

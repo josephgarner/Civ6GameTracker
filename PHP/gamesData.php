@@ -9,8 +9,8 @@
                 <div class='datapill ongoing'>
                 <table>
                     <tbody>
-                        <tr>
-                            <th>Turns: $parent_row[turns]</th>
+                        <tr style='color:#DAA520;'>
+                            <th>ID: $parent_row[game_ID]</th>
                             ";
         if($_SESSION['admin'] == 1){
             echo            "<th>
@@ -20,7 +20,9 @@
                                 </form>
                             </th>";
         }
-            echo        "</tr>
+            echo        "
+                            <th colspan='2'>Turns: $parent_row[turns]</th>
+                        </tr>
                         <tr>
                             <th>Player</th>
                             <th>Defeated</th>

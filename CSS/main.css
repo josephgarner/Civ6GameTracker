@@ -277,14 +277,23 @@ body {
         min-width: 90vw;
     }
 
+    .playList {
+        min-width: 90vw;
+        padding: .5em;
+    }
+
     .ongoing {
         width: 90vw;
     }
 
     .winBanner {
         position: absolute;
-        width: 100vw;
+        /* width: 100vw; */
         height: 5em;
+    }
+
+    .playerList td:nth-child(n+3){
+        min-width: 3em;
     }
 
 

@@ -138,13 +138,14 @@
             }
             echo "
                     </tbody>
-                </table>
-                <form style='margin-top:1em;' action='PHP/updateCompleteGame' method='POST'>
-                    <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
-                    <input class='button warning' type='Submit' value='Update Civ Data'/>
-                </form>
-            </div>
-            ";
+                </table>";
+                if($_SESSION['admin'] == 1){
+                    echo "<form style='margin-top:1em;' action='PHP/updateCompleteGame' method='POST'>
+                        <input type='hidden' name='gameID' value='$parent_row[game_ID]' />
+                        <input class='button warning' type='Submit' value='Update Civ Data'/>
+                    </form>";
+                }
+            echo "</div>";
         }
     }
 ?>

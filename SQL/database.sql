@@ -208,7 +208,9 @@ INSERT INTO Player_Color (color) VALUE ('#cc0099');
 INSERT INTO Player_Color (color) VALUE ('#888844');
 INSERT INTO Player_Color (color) VALUE ('#669999');
 
-INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
+-- INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
+
+UPDATE playerscore SET season=2;
 
 -- INSERT INTO Games (title, victory_ID, season, map, sealvl, speed, rules, turns, turntype, nukes) 
 -- VALUES ("Suicidal Apostles",7,1,"Tiny Fractal", "Low", "Quick", "GS", 225, "Simultaneous", "6");
