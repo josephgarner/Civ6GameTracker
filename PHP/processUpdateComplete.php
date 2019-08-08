@@ -39,5 +39,5 @@
         echo "Error updating record: " . mysqli_error($conn);
     }
 
-    header('location:../dash');
+    header('location:../');
 ?>

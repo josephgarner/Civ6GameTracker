@@ -12,18 +12,3 @@ $(document).ready(function () {
         cache: false
     });
 });
-
-// $(document).ready(function () {
-//     $('#selectSeason').submit(function(event){
-//         $.ajax({
-//             type : 'POST',
-//             url : 'PHP/sessionChange.php',           
-//             data: {
-//                 season : $('#Season').val(),
-//             },
-//             success:function (data) {
-//                 $("#yourdiv").append(data);
-//             }          
-//         });     
-//     });
-// });

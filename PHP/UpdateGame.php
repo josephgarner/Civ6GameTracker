@@ -36,6 +36,7 @@
     <body>
         <div class="datapill">
             <form action="../PHP/processUpdateGame" method="POST">
+            <!-- <form action="/" method="POST"> -->
             <?php
                 echo "<script> setArrs($js_civs, $js_leaders); </script>";
                 $gameID = $_POST["gameID"];
@@ -81,8 +82,8 @@
                                 else if($row['dead'] == 2){
                                     echo "<td colspan='2'>Forfeited</td>";
                                 }else{
-                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[player_ID]_defeated' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
-                                    echo "<td><label class='checkbox-label'><input type='checkbox' name='$row[player_ID]_forfeit' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                 }
 
                                 
@@ -104,7 +105,7 @@
                                 } else{
                                     echo "<option value='0'>Unkown</option>";
                                 }
-                                echo "<td><span></span><input class='input updateNum ID_Score' type='input' name='$row[player_ID]_score' value='$row[score]'/></td>";
+                                echo "<td><span></span><input class='input updateNum ID_Score' type='number' name='$row[player_ID]_score' value='$row[score]'/></td>";
                                 if($row['dead'] >= 1){
                                     echo "<td></td>";
                                 }else{
@@ -123,8 +124,8 @@
                             </table>
                         ";
 
-                        echo "<span class='update-span'>Turns: </span><input class='input updateNum' id='Turns' type='input' name='turns' value='$parent_row[turns]'/><br>";
-                        echo "<span class='update-span'>Nuke: </span><input class='input updateNum' id='nukes' type='input' name='nukes' value='$parent_row[nukes]'/><br>";
+                        echo "<span class='update-span'>Turns: </span><input class='input updateNum' id='Turns' type='number' name='turns' value='$parent_row[turns]'/><br>";
+                        echo "<span class='update-span'>Nuke: </span><input class='input updateNum' id='nukes' type='number' name='nukes' value='$parent_row[nukes]'/><br>";
                     }
                 }
             ?>  

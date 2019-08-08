@@ -2,7 +2,7 @@
 <?php 
     require '../connection.inc';
     require 'mobile.php';
-    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, sealvl, speed, rules, turns, turntype, nukes, end_date, complete_NO, season
+    $parent_sql = "SELECT Games.game_ID, Games.title, Victory.vic_name, map, map_size, sealvl, speed, rules, turns, turntype, nukes, end_date, complete_NO, season
                 FROM Games INNER 
                 JOIN Victory ON Games.victory_ID = Victory.victory_ID
                 WHERE Games.victory_ID > 1
@@ -62,6 +62,10 @@
                         <tr>
                             <td>Map:</td>
                             <td>$parent_row[map]</td>
+                        </tr>
+                        <tr>
+                            <td>Map Size:</td>
+                            <td>$parent_row[map_size]</td>
                         </tr>
                         <tr>
                             <td>Sea Level:</td>

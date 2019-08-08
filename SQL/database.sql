@@ -114,6 +114,19 @@ ALTER TABLE Party
     ADD civ int,
     ADD CONSTRAINT FOREIGN KEY(civ) REFERENCES Civ(civ_ID);
 
+
+ALTER TABLE Games
+    ADD map_size varchar(255);
+UPDATE Games SET map='Continents', map_size='Small' WHERE complete_NO = 1;
+UPDATE Games SET map='Fractal', map_size='Small' WHERE complete_NO = 2;
+UPDATE Games SET map='Fractal', map_size='Small' WHERE complete_NO = 3;
+UPDATE Games SET map='Fractal', map_size='Small' WHERE complete_NO = 4;
+UPDATE Games SET map='Continents', map_size='Small' WHERE complete_NO = 5;
+UPDATE Games SET map='Small Continents', map_size='Small' WHERE complete_NO = 6;
+
+ALTER TABLE PlayerScore
+    ADD wins int;
+
 ALTER TABLE Games
     ADD complete_NO int;
 
@@ -174,39 +187,43 @@ INSERT INTO Victory (vic_name) VALUES ('Score');
 INSERT INTO Victory (vic_name) VALUES ('Default');
 
 INSERT INTO Players (pName, wins) VALUES ('Bradley',0);
-INSERT INTO PlayerScore (player_ID) VALUES (1);
 INSERT INTO Players (pName, wins) VALUES ('Daniel',0);
-INSERT INTO PlayerScore (player_ID) VALUES (2);
 INSERT INTO Players (pName, wins) VALUES ('Hamish',0);
-INSERT INTO PlayerScore (player_ID) VALUES (3);
 INSERT INTO Players (pName, wins) VALUES ('Jason',0);
-INSERT INTO PlayerScore (player_ID) VALUES (4);
 INSERT INTO Players (pName, wins) VALUES ('Jeremy',0);
-INSERT INTO PlayerScore (player_ID) VALUES (5);
 INSERT INTO Players (pName, wins) VALUES ('Jess',0);
-INSERT INTO PlayerScore (player_ID) VALUES (6);
 INSERT INTO Players (pName, wins) VALUES ('Joseph',0);
-INSERT INTO PlayerScore (player_ID) VALUES (7);
 INSERT INTO Players (pName, wins) VALUES ('Will',0);
+
+
+INSERT INTO PlayerScore (player_ID) VALUES (1);
+INSERT INTO PlayerScore (player_ID) VALUES (2);
+INSERT INTO PlayerScore (player_ID) VALUES (3);
+INSERT INTO PlayerScore (player_ID) VALUES (4);
+INSERT INTO PlayerScore (player_ID) VALUES (5);
+INSERT INTO PlayerScore (player_ID) VALUES (6);
+INSERT INTO PlayerScore (player_ID) VALUES (7);
 INSERT INTO PlayerScore (player_ID) VALUES (8);
 
-INSERT INTO Player_Color (color, player_ID) VALUE ('#cc0000',1);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#cc6600',2);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#cc3300',3);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#cc9900',4);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#cccc00',5);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#99cc00',6);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#66cc00',7);
-INSERT INTO Player_Color (color, player_ID) VALUE ('#00cc66',8);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#c40000',1);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#c47900',2);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#c4b400',3);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#9ac400',4);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#65c400',5);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#14c400',6);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#004bc4',7);
+INSERT INTO Player_Color (color, player_ID) VALUE ('#5b00c4',8);
 
-INSERT INTO Player_Color (color) VALUE ('#00cc99');
-INSERT INTO Player_Color (color) VALUE ('#0099cc');
-INSERT INTO Player_Color (color) VALUE ('#0033cc');
-INSERT INTO Player_Color (color) VALUE ('#6600cc');
-INSERT INTO Player_Color (color) VALUE ('#cc00cc');
-INSERT INTO Player_Color (color) VALUE ('#cc0099');
-INSERT INTO Player_Color (color) VALUE ('#888844');
-INSERT INTO Player_Color (color) VALUE ('#669999');
+INSERT INTO Player_Color (color) VALUE ('#d1605c');
+INSERT INTO Player_Color (color) VALUE ('#d1a05c');
+INSERT INTO Player_Color (color) VALUE ('#cbd15c');
+INSERT INTO Player_Color (color) VALUE ('#8dd15c');
+INSERT INTO Player_Color (color) VALUE ('#5cd187');
+INSERT INTO Player_Color (color) VALUE ('#5cd1c7');
+INSERT INTO Player_Color (color) VALUE ('#5c7bd1');
+INSERT INTO Player_Color (color) VALUE ('#895cd1');
+INSERT INTO Player_Color (color) VALUE ('#c75cd1');
+INSERT INTO Player_Color (color) VALUE ('#d15c98');
 
 -- INSERT INTO Logins (username, password, admin) VALUES ("root","",1);
 

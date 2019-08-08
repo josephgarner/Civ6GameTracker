@@ -67,20 +67,25 @@
                             echo "Error updating record: " . mysqli_error($conn);
                         }
                         if($winner > 0){
-                            $sql = "UPDATE PlayerScore
-                                    SET totalScore = totalScore + $value
-                                    WHERE player_ID = $indx
-                                    AND season = $season;";
-                            if (mysqli_query($conn, $sql)) {
-                                echo "Record Total Score updated successfully";
-                            } else {
-                                echo "Error updating record: " . mysqli_error($conn);
-                            }
-                            if(mysqli_affected_rows() == 0){
+                            $sql = "SELECT * FROM PlayerScore WHERE player_ID = $indx
+                            AND season = $season;";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result)==0){
                                 $sql = "INSERT INTO PlayerScore(totalScore, player_ID,season)
                                     VALUES($value,$indx,$season)";
                                 if (mysqli_query($conn, $sql)) {
                                     echo "Record NEW Total Score updated successfully";
+                                }
+                            }else{
+                                $sql = "UPDATE PlayerScore
+                                    SET totalScore = totalScore + $value
+                                    WHERE player_ID = $indx
+                                    AND season = $season;";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result) {
+                                    echo "Record Total Score updated successfully";
+                                } else {
+                                    echo "Error updating record: " . mysqli_error($conn);
                                 }
                             }
                         }

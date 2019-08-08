@@ -1,18 +1,15 @@
 <?php
     $name = $_POST["newPlayer"];
     $color = $_POST["color"];
-    $season = $_SESSION['season'];
     require '../connection.inc';
-    $sql = "INSERT INTO Players (pName, wins) VALUES ('$name',0)";
+    $sql = "INSERT INTO Players (pName, wins) VALUES ('$name',0);";
     $result = mysqli_query($conn, $sql);
     
-    $sql = "SELECT cound(player_ID) FROM Players"
+    $sql = "SELECT player_ID FROM Players ORDER BY player_ID DESC LIMIT 1;";
     $result = mysqli_query($conn, $sql);
-    $value = mysql_fetch_object($result);
+    $value = mysqli_fetch_assoc($result);
 
-    $sql = "INSERT INTO PlayerScore (player_ID, season) VALUES ($value,  $season);";
+    $sql = "INSERT INTO Player_Color (player_ID, color) VALUES ($value[player_ID],  '$color');";
     $result = mysqli_query($conn, $sql);
-
-    $sql = "INSERT INTO Player_Color (player_ID, color) VALUES ($value,  '$color');";
-    $result = mysqli_query($conn, $sql);
+    header('location:../');
 ?>

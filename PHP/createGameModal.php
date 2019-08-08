@@ -21,7 +21,7 @@
                 </table>
             </div>
             <div>
-                <span>Season: </span><br><input class="select input" type="text" name="season" value="2"/><br>
+                <span>Season: </span><br><input class="select input" type="number" name="season" value="2"/><br>
                 <span>Map: </span><br><select class="select input"  name="map">
                     <option value="Continents">Continents</option>
                     <option value="Fractal">Fractal</option>

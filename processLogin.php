@@ -20,9 +20,8 @@
             $_SESSION['season'] = 2;
             echo $_SESSION['admin'];
             header('location:/');
-        }else{ ?>
+        }else{ 
             header('location:/');
-        <?php
         }
     }
 ?>

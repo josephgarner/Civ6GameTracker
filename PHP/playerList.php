@@ -21,7 +21,7 @@
             </tr>
             <?php  
                 require '../connection.inc';
-                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, wins, color, season
+                $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, color, season
                                 FROM Players 
                                 RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
                                 RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
@@ -35,7 +35,15 @@
                         echo "<td class='color'><span style='color:$row[color];'>&#9679</span></td>";
                         echo "<td>$row[pName]</td>";
                         echo "<td>$row[totalScore]</td>";
-                        echo "<td>$row[wins]</td>";
+                        $win_SQL = "SELECT count(winner) as wins FROM party
+                                    LEFT JOIN Games ON Party.game_ID = Games.game_ID
+                                    WHERE player_ID = $row[player_ID] AND Games.season = $season";
+                        $win_result = mysqli_query($conn, $win_SQL);
+                        if (mysqli_num_rows($win_result) > 0) {
+                            while($win_row = mysqli_fetch_assoc($win_result)) {
+                                echo "<td>$win_row[wins]</td>";
+                            }
+                        }
                         if($mobile_browser == 0) {
                             $sql = "SELECT vic_name, COUNT(Victories.victory_ID) as wins
                             FROM Victory
@@ -75,7 +83,7 @@
                             }
                         }
                         if($_SESSION['admin'] == 1){
-                            echo "<td><button onClick='removePlayer(event, $row[player_ID])' class='button error'>Remove</button></td>";
+                            // echo "<td><button onClick='removePlayer(event, $row[player_ID])' class='button error'>Remove</button></td>";
                         }
                         echo "</tr>";
                     }
@@ -97,10 +105,10 @@
 if($_SESSION['admin'] == 1){
 ?>
 <div class='datapill centre'>
-    <form action="/" id="addNewPlayer">
+    <form action="PHP/addnewplayer.php" method='POST' id="addNewPlayer">
         <span>New Player: </span><input class="input" type="text" name="newPlayer"/>
         <br>
-        <span>Player Color: </span><select class="input" name="color">
+        <span>Player Color: </span><select id='colorSelect' class="input" name="color">
             <?php
                 $parent_sql = "SELECT color
                 FROM Player_Color 
@@ -108,23 +116,28 @@ if($_SESSION['admin'] == 1){
                 $parent_result = mysqli_query($conn, $parent_sql);
                 if (mysqli_num_rows($parent_result) > 0) {
                     while($row = mysqli_fetch_assoc($parent_result)) {
-                        echo "<option style='background-color:$row[color] ! important;' value=$row[color]></option>";
+                        echo "<option style='background-color:$row[color] ! important;' value=$row[color]>$row[color]</option>";
                     }
                 }
             ?>
         </select><br>
         <input class="button confirm" type="submit" value="Add Player"/>
     </form>
-    <script>
-        $('#addNewPlayer').submit(function(event){
-            event.preventDefault();
-            var data = $('#addNewPlayer').serialize();
-            $.post('PHP/addnewplayer.php', data);
-            $("#Players").load("PHP/playerList.php");
-        });
-    </script>
 <div>
-
+<script>
+    $(document).ready(function(){
+        var selectedVal = $("#colorSelect option:selected").val();
+        $('#colorSelect').css({
+            "background-color": selectedVal
+        });
+    });
+    $('#colorSelect').change(function(){
+        var selectedVal = $("#colorSelect option:selected").val();
+        $('#colorSelect').css({
+            "background-color": selectedVal
+        });
+    });
+</script>
 <?php
 }
 ?>
