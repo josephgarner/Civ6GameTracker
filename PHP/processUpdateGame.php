@@ -198,5 +198,5 @@
             }
         }
     }
-    // header('location:../');
+    header('location:../');
 ?>
