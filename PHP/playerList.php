@@ -35,7 +35,7 @@
                         echo "<td class='color'><span style='color:$row[color];'>&#9679</span></td>";
                         echo "<td>$row[pName]</td>";
                         echo "<td>$row[totalScore]</td>";
-                        $win_SQL = "SELECT count(winner) as wins FROM party
+                        $win_SQL = "SELECT count(winner) as wins FROM Party
                                     LEFT JOIN Games ON Party.game_ID = Games.game_ID
                                     WHERE player_ID = $row[player_ID] AND Games.season = $season";
                         $win_result = mysqli_query($conn, $win_SQL);
