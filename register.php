@@ -1,4 +1,3 @@
-<!-- http://site2019testing.rf.gd -->
 <!DOCTYPE html>
 <?php require 'connection.inc';?>
 <html>

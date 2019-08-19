@@ -1,4 +1,3 @@
-<!-- http://site2019testing.rf.gd -->
 <?php
     session_start();
     if (!isset($_SESSION['admin'])){

@@ -21,7 +21,7 @@
                 </table>
             </div>
             <div>
-                <span>Season: </span><br><input class="select input" type="number" name="season" value="2"/><br>
+                <?php echo "<span>Season: </span><br><input class='select input' type='number' name='season' value='$season'/><br>";  ?>
                 <span>Map: </span><br><select class="select input"  name="map">
                     <option value="Continents">Continents</option>
                     <option value="Fractal">Fractal</option>
@@ -42,7 +42,7 @@
                 <span>Map Size: </span><br><select class="select input" name="mapSize">
                     <option value="Tiny">Tiny</option>
                     <option value="Small">Small</option>
-                    <option value="Standed">Standed</option>
+                    <option value="Standard">Standard</option>
                     <option value="Large">Large</option>
                     <option value="Huge">Huge</option>
                 </select><br>
