@@ -7,7 +7,7 @@
                 <th>Player</th>
                 <th>Score</th>
                 <th>Wins</th>
-                <th>Losses</th>
+                <th>W/L</th>
             <?php   
                 require 'mobile.php';
                 if($mobile_browser == 0) {  ?>
@@ -23,13 +23,13 @@
             <?php  
                 require '../connection.inc';
                 $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, color, season, (SELECT count(winner) as wins FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season) AS playerWins,
-                                (SELECT count(Party.game_ID) FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season AND winner IS NULL AND complete_NO >= 1) AS playerLoss
-                                FROM Players 
-                                RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
-                                RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
-                                WHERE Player_Color.player_ID IS NOT NULL
-                                AND season = $season
-                                ORDER BY playerWins DESC, PlayerScore.totalScore DESC;";
+                ROUND((SELECT count(winner) as wins FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season) / (SELECT count(Party.game_ID) FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = 2 AND winner IS NULL AND complete_NO >= 1),2) AS ratio
+                FROM Players 
+                RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
+                RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
+                WHERE Player_Color.player_ID IS NOT NULL
+                AND season = $season
+                ORDER BY playerWins DESC, PlayerScore.totalScore DESC";
                 $parent_result = mysqli_query($conn, $parent_sql);
                 if (mysqli_num_rows($parent_result) > 0) {
                     while($row = mysqli_fetch_assoc($parent_result)) {
@@ -38,7 +38,12 @@
                         echo "<td>$row[pName]</td>";
                         echo "<td>$row[totalScore]</td>";
                         echo "<td>$row[playerWins]</td>";
-                        echo "<td>$row[playerLoss]</td>";
+                        if("$row[ratio]" == null){
+                            echo "<td style='font-size: 1.5em;'>&#8734;</td>";
+                        }else{
+                            $ratio = "$row[ratio]";
+                            echo "<td>$ratio</td>";
+                        }
                         if($mobile_browser == 0) {
                             $sql = "SELECT vic_name, COUNT(Victories.victory_ID) as wins
                             FROM Victory
