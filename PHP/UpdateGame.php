@@ -58,7 +58,8 @@
                                     <tbody>
                                         <tr>
                                             <th>Player</th>
-                                            <th colspan='2'>Defeat/Forfeit</th>
+                                            <th>Defeat</th>
+                                            <th>Forfeit</th>
                                             <th>Civ</th>
                                             <th>leader</th>
                                             <th>Score</th>
@@ -77,10 +78,12 @@
                                 echo "<tr>";
                                 echo "<td>$row[pName]</td>";
                                 if($row['dead'] == 1){
-                                    echo "<td colspan='2'>Defeated</td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]' checked/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                 }
                                 else if($row['dead'] == 2){
-                                    echo "<td colspan='2'>Forfeited</td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/ checked><span class='checkbox-custom'></span></label></td>";
                                 }else{
                                     echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                     echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";

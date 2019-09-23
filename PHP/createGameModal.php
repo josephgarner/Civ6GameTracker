@@ -23,7 +23,16 @@
             <div>
                 <?php echo "<span>Season: </span><br><input class='select input' type='number' name='season' value='$season'/><br>";  ?>
                 <span>Map: </span><br><select class="select input"  name="map">
-                    <option value="Continents">Continents</option>
+                    <?php
+                        $sql = "SELECT map_name FROM Maps ORDER BY map_name ASC;";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                echo "<option value='$row[map_name]'>$row[map_name]</option>";
+                            }
+                        }
+                    ?>
+                    <!-- <option value="Continents">Continents</option>
                     <option value="Fractal">Fractal</option>
                     <option value="Inland Sea">Inland Sea</option>
                     <option value="Island Plates">Island Plates</option>
@@ -37,7 +46,7 @@
                     <option value="East Asia">East Asia</option>
                     <option value="True Start Location East Asia">True Start Location East Asia</option>
                     <option value="Europe">Europe</option>
-                    <option value="True Start Location Europe">True Start Location Europe</option>
+                    <option value="True Start Location Europe">True Start Location Europe</option> -->
                 </select><br>
                 <span>Map Size: </span><br><select class="select input" name="mapSize">
                     <option value="Tiny">Tiny</option>

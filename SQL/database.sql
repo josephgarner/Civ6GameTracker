@@ -89,6 +89,12 @@ CREATE TABLE Party(
     FOREIGN KEY(civ) REFERENCES Civ(civ_ID)
 );
 
+CREATE TABLE Maps(
+    map_ID int NOT NULL AUTO_INCREMENT,
+    map_name varchar(255),
+    PRIMARY KEY (map_ID)
+);
+
 
 
 INSERT INTO Civ (civ_name, civ_leader) VALUES ('America','Teddy Roosevelt');
@@ -165,3 +171,28 @@ INSERT INTO Player_Color (color) VALUE ('#5c7bd1');
 INSERT INTO Player_Color (color) VALUE ('#895cd1');
 INSERT INTO Player_Color (color) VALUE ('#c75cd1');
 INSERT INTO Player_Color (color) VALUE ('#d15c98');
+
+INSERT INTO Maps (map_name) VALUE ('Continents');
+INSERT INTO Maps (map_name) VALUE ('Fractal');
+INSERT INTO Maps (map_name) VALUE ('Inland Sea');
+INSERT INTO Maps (map_name) VALUE ('Island Plates');
+INSERT INTO Maps (map_name) VALUE ('Pangaea');
+INSERT INTO Maps (map_name) VALUE ('Shuffle');
+INSERT INTO Maps (map_name) VALUE ('4-Leaf Clover');
+INSERT INTO Maps (map_name) VALUE ('6-Armed Snowflake');
+INSERT INTO Maps (map_name) VALUE ('Earth (Map)');
+INSERT INTO Maps (map_name) VALUE ('True Start Location Earth');
+INSERT INTO Maps (map_name) VALUE ('Archipelago');
+INSERT INTO Maps (map_name) VALUE ('Seven Seas');
+INSERT INTO Maps (map_name) VALUE ('Small Continents');
+INSERT INTO Maps (map_name) VALUE ('East Asia');
+INSERT INTO Maps (map_name) VALUE ('True Start Location East Asia');
+INSERT INTO Maps (map_name) VALUE ('Europe');
+INSERT INTO Maps (map_name) VALUE ('True Start Location Europe');
+INSERT INTO Maps (map_name) VALUE ('Continents and Islands');
+INSERT INTO Maps (map_name) VALUE ('Lakes');
+INSERT INTO Maps (map_name) VALUE ('Mirror');
+INSERT INTO Maps (map_name) VALUE ('Primordial');
+INSERT INTO Maps (map_name) VALUE ('Splintered Fractal');
+INSERT INTO Maps (map_name) VALUE ('Terra');
+INSERT INTO Maps (map_name) VALUE ('Tilted Axis');

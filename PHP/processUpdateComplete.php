@@ -26,6 +26,30 @@
                         echo "Error updating record: " . mysqli_error($conn);
                     }
                 }
+                elseif(strpos($key, 'defeated') !== false){
+                    echo "<br>Updating Defeated<br>";
+                    $sql = "UPDATE Party
+                        SET dead = 1
+                        WHERE game_ID = $gameID
+                        AND player_ID = $indx;";
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Record Defeated updated successfully";
+                    } else {
+                        echo "Error updating record: " . mysqli_error($conn);
+                    }
+                }
+                elseif(strpos($key, 'forfeit') !== false){
+                    echo "<br>Updating forfeit<br>";
+                    $sql = "UPDATE Party
+                        SET dead = 2
+                        WHERE game_ID = $gameID
+                        AND player_ID = $indx;";
+                    if (mysqli_query($conn, $sql)) {
+                        echo "Record forfeit updated successfully";
+                    } else {
+                        echo "Error updating record: " . mysqli_error($conn);
+                    }
+                }
                 
             }
         }

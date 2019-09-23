@@ -32,6 +32,24 @@
         <link href="../CSS/style.css" rel="stylesheet" type="text/css">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="../JS/civs.js"></script>
+        <script>
+            function radioGroup(type,playerID){
+                console.log("Checking button");
+                if(type == 1){
+                    if($('#'+playerID+'_forfeit').is(':checked')){
+                        console.log('#'+playerID+'_forfeit Checked');
+                        $('#'+playerID+'_defeated').prop('checked', false);
+                        console.log("Unchecking Defeat");
+                    }
+                }else{
+                    if($('#'+playerID+'_defeated').is(':checked')){
+                        console.log('#'+playerID+'_defeated Checked');
+                        $('#'+playerID+'_forfeit').prop('checked', false);
+                        console.log("Unchecking Forfeit");
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="datapill">
@@ -56,12 +74,13 @@
                                     <tbody>
                                         <tr>
                                             <th>Player</th>
-                                            <th>Def</th>
+                                            <th>Defeat</th>
+                                            <th>Forfeit</th>
                                             <th>Civ</th>
                                             <th>leader</th>
                                         </tr>
                             ";
-                        $sql = "SELECT Players.pName, Party.dead, civ, civ_name, civ_leader, Players.player_ID, Party.score
+                        $sql = "SELECT Players.pName, Party.dead, civ, civ_name, civ_leader, Players.player_ID, Party.score, winner
                             FROM Party
                             INNER JOIN Games ON Party.game_ID = Games.game_ID
                             INNER JOIN Players On Party.player_ID = Players.player_ID
@@ -73,12 +92,21 @@
                                 echo "<tr>";
                                 echo "<td>$row[pName]</td>";
                                 if($row['dead'] == 1){
-                                    echo "<td>Defeated</td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]' checked/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                 }
                                 else if($row['dead'] == 2){
-                                    echo "<td>Forfeited</td>";
-                                }else{
-                                    echo "<td></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/ checked><span class='checkbox-custom'></span></label></td>";
+                                }else if($row['winner'] != null){
+                                    // echo "<td></td>";
+                                    // echo "<td></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]' Disabled/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]' Disabled/><span class='checkbox-custom'></span></label></td>";
+                                }
+                                else{
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_defeated' class='JS_Defeat' type='checkbox' name='$row[player_ID]_defeated' onChange='radioGroup(0,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
+                                    echo "<td><label class='checkbox-label'><input id='$row[player_ID]_forfeit' class='JS_Forfeit' type='checkbox' name='$row[player_ID]_forfeit' onChange='radioGroup(1,$row[player_ID])' value='$row[player_ID]'/><span class='checkbox-custom'></span></label></td>";
                                 }
 
                                 
