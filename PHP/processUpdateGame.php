@@ -16,13 +16,18 @@
         } else {
             echo "Error updating record: " . mysqli_error($conn);
         }
-    } else {
+    } 
+    else if(isset($_POST['cancel'])){
+        header('location:/');
+    }
+    else {
         $victory = $_POST["Victory"];
         $gameTitle = $_POST["GameTitle"];
         $turns = $_POST["turns"];
         $nuke = $_POST["nukes"];
         $winner = $_POST["winner"];
         $victory = $_POST["Victory"];
+        $completed = $_POST["completed"];
         $players = array();
         $placement = array();
 
@@ -66,7 +71,7 @@
                         } else {
                             echo "Error updating record: " . mysqli_error($conn);
                         }
-                        if($winner > 0){
+                        if($winner > 0 && $completed == 'false'){
                             $sql = "SELECT * FROM PlayerScore WHERE player_ID = $indx
                             AND season = $season;";
                             $result = mysqli_query($conn, $sql);
@@ -129,7 +134,7 @@
         }
 
         foreach($players as $x => $x_value) {
-            if($x == $winner){
+            if($x == $winner && $completed == 'false'){
                 echo "<br>Updating Winner<br>";
                 $sql = "UPDATE Party
                     SET placement = 1, winner = 1
