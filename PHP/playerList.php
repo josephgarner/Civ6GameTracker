@@ -42,8 +42,8 @@
                                         echo "<td class='color'><span style='color:$row[color];'>&#9679</span></td>";
                                         echo "<td><span title='Player'>$row[pName]</span></td>";
                                         echo "<td><span title='Total Score'>$row[totalScore]</span></td>";
-                                        echo "<td><span title='Wins/Losses'>$row[playerWins]<span style='font-size:.7em;'>/$row[losses]</span</span></td>";
                                         $total = $row['playerWins']+$row['losses'];
+                                        echo "<td><span title='Wins/Losses'>$row[playerWins]<span style='font-size:.7em;'>/$total</span</span></td>";
                                         // echo "<td><span title='Games played'>$total</span></td>";
                                         ?> 
                                         </tr>
