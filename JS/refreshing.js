@@ -7,7 +7,7 @@ $(document).ready(function () {
         $("#Players").load('PHP/playerList.php');
         $("#Finished_Games").load("PHP/finishedGames.php");
         $("#Games").load("PHP/gamesData.php");
-    }, 30000);
+    }, 240000);
     $.ajaxSetup({
         cache: false
     });

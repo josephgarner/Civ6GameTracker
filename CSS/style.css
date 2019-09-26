@@ -214,3 +214,33 @@ h4 {
 
 
 /* RADIO */
+
+/** ACCORDION **/
+.accordion {
+    background-color: inherit;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+
+.active {
+  background-color: inherit;
+}
+
+.accordion:hover{
+    background-color: #01589f;
+    border-color: #01589f;
+}
+
+.data {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}

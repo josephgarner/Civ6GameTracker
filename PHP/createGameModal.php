@@ -32,21 +32,6 @@
                             }
                         }
                     ?>
-                    <!-- <option value="Continents">Continents</option>
-                    <option value="Fractal">Fractal</option>
-                    <option value="Inland Sea">Inland Sea</option>
-                    <option value="Island Plates">Island Plates</option>
-                    <option value="Pangaea">Pangaea</option>
-                    <option value="Shuffle">Shuffle</option>
-                    <option value="4-Leaf Clover">4-Leaf Clover</option>
-                    <option value="6-Armed Snowflake">6-Armed Snowflake</option>
-                    <option value="Earth">Earth</option>
-                    <option value="True Start Location Earth">True Start Location Earth</option>
-                    <option value="Small Continents">Small Continents</option>
-                    <option value="East Asia">East Asia</option>
-                    <option value="True Start Location East Asia">True Start Location East Asia</option>
-                    <option value="Europe">Europe</option>
-                    <option value="True Start Location Europe">True Start Location Europe</option> -->
                 </select><br>
                 <span>Map Size: </span><br><select class="select input" name="mapSize">
                     <option value="Tiny">Tiny</option>

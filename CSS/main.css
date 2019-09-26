@@ -130,6 +130,7 @@ body {
     text-align: center;
     border: none;
     border-spacing: 0;
+    font-size: 1em;
 }
 
 .playerList tr:nth-child(2) {
@@ -150,12 +151,34 @@ body {
 .playerList td {
     border: none;
     margin: 0;
-    min-width: 5em;
+    min-width: 7em;
+}
+
+.playerDetails{
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-spacing: 0;
+}
+.playerDetails td{
+    border: none;
+    margin: 0;
+    min-width: 3em;
+    background-image: none;
+}
+
+.playerDetails tr{
+    background-image: none;
+}
+
+.playerDetails tr:nth-child(-n+5){
+    background-image: none;
 }
 
 .color {
     font-size: 1.5em;
-    min-width: 0em !important;
+    min-width: 1em !important;
 }
 
 .winBanner {
@@ -177,7 +200,7 @@ body {
 }
 
 .sortingGames {
-    width: 100%
+    width: 100%;
 }
 
 .finGame {

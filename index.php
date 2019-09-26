@@ -16,6 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="CSS/main.css" rel="stylesheet" type="text/css">
         <link href="CSS/style.css" rel="stylesheet" type="text/css">
+        <link href="CSS/animate.css" rel="stylesheet" type="text/css">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="JS/refreshing.js"></script>
     </head>
@@ -59,22 +60,22 @@
             ?>
             </div>
         </div>
-        <div class="flex flex-coloumn" id="Players">
+        <div class="flex flex-coloumn animated zoomIn delay-.5s" id="Players">
         </div>
         <?php
         if($_SESSION['admin'] == 1){
         ?>
             <h1>Create New Game</h1>
-            <div class="flex" id="newGame_Modal">
+            <div class="flex animated zoomIn delay-.7s" id="newGame_Modal">
             </div>
         <?php
         }
         ?>
         <h1>Current Games</h1>
-        <div class="flex" id="Games">
+        <div class="flex animated zoomIn delay-.9s" id="Games">
         </div>
         <h1>Completed Games</h1>
-        <div class="flex cards" id="Finished_Games">
+        <div class="flex cards animated zoomIn delay-1s" id="Finished_Games">
         </div>
          
     </body>
