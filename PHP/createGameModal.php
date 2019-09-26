@@ -47,8 +47,8 @@
                 </select><br>
                 <span>Speed: </span><br><select class="select input" name="speed">
                     <option value="Online">Online</option>
-                    <option value="Quick" selected="selected">Quick</option>
-                    <option value="Standard">Standard</option>
+                    <option value="Quick">Quick</option>
+                    <option value="Standard" selected="selected">Standard</option>
                     <option value="Epic">Epic</option>
                     <option value="Marathon">Marathon</option>
                 </select><br>
