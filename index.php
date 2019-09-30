@@ -19,6 +19,7 @@
         <link href="CSS/animate.css" rel="stylesheet" type="text/css">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="JS/refreshing.js"></script>
+
     </head>
     <body style='margin-top: 5em;'>
         <div class="infoBar">
@@ -72,11 +73,11 @@
         }
         ?>
         <h1>Current Games</h1>
-        <div class="flex animated zoomIn delay-2s" id="Games">
+        <div class="flex cards size animated zoomIn delay-1.5s" id="Games">
         </div>
         <h1>Completed Games</h1>
-        <div class="flex cards animated zoomIn delay-1s" id="Finished_Games">
+        <div class="flex cards size animated zoomIn delay-1s" id="Finished_Games">
         </div>
-         
+        <!-- <script src="JS/accordion.js"></script> -->
     </body>
 </html>

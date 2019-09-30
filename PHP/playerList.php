@@ -21,7 +21,8 @@
                 // AND season = $season
                 // ORDER BY playerWins DESC, PlayerScore.totalScore DESC";
                 $parent_sql = "SELECT Players.player_ID, pName, PlayerScore.totalScore, color, season, (SELECT count(winner) as wins FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season) AS playerWins,
-                (SELECT count(Party.game_ID) FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season AND winner IS NULL AND complete_NO >= 1) AS losses
+                (SELECT count(Party.game_ID) FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season AND winner IS NULL AND complete_NO >= 1) AS losses,
+                ROUND((SELECT count(winner) as wins FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = $season) / (SELECT count(Party.game_ID) FROM Party LEFT JOIN Games ON Party.game_ID = Games.game_ID WHERE player_ID = Players.player_ID AND Games.season = 2 AND winner IS NULL AND complete_NO >= 1),2) AS ratio
                 FROM Players 
                 RIGHT JOIN PlayerScore ON PlayerScore.player_ID = Players.player_ID
                 RIGHT JOIN Player_Color ON Player_Color.player_ID = Players.player_ID
@@ -34,7 +35,7 @@
                                     ?>
                         <tr>
                             <td colspan='5'>
-                                <button class='accordion'>
+                                <button class='accordion accordion_playerList'>
                                     <table class='playerList'>
                                         <tbody>
                                             <tr>                                    
@@ -45,6 +46,7 @@
                                         $total = $row['playerWins']+$row['losses'];
                                         echo "<td><span title='Wins/Losses'>$row[playerWins]<span style='font-size:.7em;'>/$total</span</span></td>";
                                         // echo "<td><span title='Games played'>$total</span></td>";
+                                        $win_per = round(($row['playerWins'] / $total) * 100);
                                         ?> 
                                         </tr>
                                     </tbody>
@@ -59,6 +61,13 @@
                                             <td></td>
                                             <td colspan='2'>Losses:</td>
                                             <?php echo "<td>$row[losses]</td>"; ?>
+                                        </tr>
+                                        <tr>
+                                            <td colspan='2'>W/L Ratio:</td>
+                                            <?php echo "<td>$row[ratio]</td>"; ?>
+                                            <td></td>
+                                            <td colspan='2'>Win %:</td>
+                                            <?php echo "<td>$win_per%</td>"; ?>
                                         </tr>
                                         <tr>
                                             <td colspan='2'>Games:</td>
@@ -144,26 +153,10 @@
                 }
             
             ?>
+            <script src="JS/accordion.js"></script>
             <script>
-                // function removePlayer(event,id_val){
-                //     event.preventDefault();
-                //     $.post( "PHP/removePlayer.php", { id: id_val} );
-                //     $("#Players").load("PHP/playerList.php");
-                // }   
-                var acc = document.getElementsByClassName("accordion");
-                var i;
-
-                for (i = 0; i < acc.length; i++) {
-                  acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                      panel.style.maxHeight = null;
-                    } else {
-                      panel.style.maxHeight = panel.scrollHeight + "px";
-                    }
-                  });
-                }
+                var acc_player = document.getElementsByClassName("accordion_playerList");
+                dropdown(acc_player);
             </script>
         </tbody>
     </table>
