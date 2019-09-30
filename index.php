@@ -60,19 +60,19 @@
             ?>
             </div>
         </div>
-        <div class="flex flex-coloumn animated zoomIn delay-.5s" id="Players">
+        <div class="flex flex-coloumn animated zoomIn delay-1s" id="Players">
         </div>
         <?php
         if($_SESSION['admin'] == 1){
         ?>
             <h1>Create New Game</h1>
-            <div class="flex animated zoomIn delay-.7s" id="newGame_Modal">
+            <div class="flex animated zoomIn delay-1.3s" id="newGame_Modal">
             </div>
         <?php
         }
         ?>
         <h1>Current Games</h1>
-        <div class="flex animated zoomIn delay-.9s" id="Games">
+        <div class="flex animated zoomIn delay-2s" id="Games">
         </div>
         <h1>Completed Games</h1>
         <div class="flex cards animated zoomIn delay-1s" id="Finished_Games">

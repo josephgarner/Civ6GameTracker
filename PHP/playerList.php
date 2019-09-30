@@ -71,10 +71,11 @@
                                             <td colspan='3'>Victory Style:</td>
                                             <td></td>
                                             <?php
-                                                $vic_sql = "Select Victory.vic_name, count(Victory.vic_name) FROM Victories 
-                                                        LEFT JOIN Victory ON Victories.victory_ID = Victory.victory_ID 
-                                                        WHERE player_ID = $row[player_ID]
-                                                        GROUP BY Victory.vic_name LIMIT 1;";
+                                                $vic_sql = "Select Victory.vic_name, count(Victory.vic_name) as total FROM Victories 
+                                                LEFT JOIN Victory ON Victories.victory_ID = Victory.victory_ID 
+                                                WHERE player_ID = $row[player_ID]
+                                                GROUP BY Victory.vic_name
+                                                ORDER BY total DESC Limit 1;";
                                                 $vic_result = mysqli_query($conn, $vic_sql);
                                                 $vic = mysqli_fetch_object($vic_result);
                                                 if($vic != null){
