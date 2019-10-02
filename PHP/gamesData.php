@@ -7,7 +7,7 @@
         while($parent_row = mysqli_fetch_assoc($parent_result)) {
             ?>
             <div class='datapill ongoing'>
-                <table>
+                <table style="width: inherit;">
                     <tbody>
                         <tr style='color:#DAA520;'>
                             <th>ID: <?php echo "$parent_row[game_ID]"; ?></th>
